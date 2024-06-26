@@ -1,98 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie Details</title>
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      .movie-banner {
-        background: url("src/banner1jpg.jpg") no-repeat center center;
-        background-size: cover;
-        height: 400px;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-      }
-      .movie-poster {
-        width: 10px;
-      }
-      .movie-details {
-        margin-top: -100px;
-      }
-      .movie-details img {
-        margin-top: 400px;
-        width: 40%;
-      }
-      .movie-info {
-        background-color: rgba(255, 255, 255, 0.9);
-        padding: 20px;
-        border-radius: 13px;
-        margin-top: 60px;
-      }
-      .btn{      
-        position: absolute;
-        right: 0;
-        margin: 20px;
-      }
-      .name-date{
-        position: absolute;
-        left: 0;
-        margin-top: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container-fluid p-0">
-      <div class="movie-banner">
-        <div class="movie-details">
-          <img
-            src="src/movie3.jpg"
-            alt="Movie Poster"
-            class="movie-poster rounded"
-          />
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Details</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="FooterStyle.css">
+  <style>
+    .movie-banner {
+      background-image: url("src/banner1jpg.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      color: white;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      flex-direction: column;
+      text-align: end;
+    }
+
+
+
+    .movie-details {
+      margin-top: -100px;
+      justify-content: end;
+      margin-right: 80px;
+    }
+
+    .movie-details img {
+      margin-top: 400px;
+      width: 40%;
+    }
+
+    .movie-info {
+      background-color: #EEEDEB;
+      padding: 20px;
+      border-radius: 13px;
+      margin-top: 80px;
+      height: 230px;
+      margin-bottom: -30px;
+
+    }
+
+
+
+
+    .name-date {
+      position: absolute;
+      left: 0;
+      margin-top: 20px;
+
+    }
+
+    .DateLabel {
+      font-weight: bold;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 10px;
+      font-size: 30px;
+    }
+
+    .MovieName {
+      font-weight: bold;
+      font-size: 50px;
+    }
+
+    .MovieInfoBody {
+      background-color: azure;
+    }
+  </style>
+</head>
+
+<body class="MovieInfoBody">
+  <div class="container-fluid p-0">
+    <div id="MovieBanner" class="movie-banner">
+      <div class="movie-details">
+        <img id="MoviePoster" src="src/movie3.jpg" alt="Movie Poster" class="movie-poster rounded " />
       </div>
+    </div>
+
+    <div class="name-date container"><br><br><br>
+      <h4 id="MovieName" class="MovieName">Movie Name <label id="Date" class="DateLabel badge-warning">2024 May 06</label></h4>
       <button class="btn btn-primary">BOOK TICKETS</button>
-      <div class="name-date container">
-          <h4>Movie Name From DB</h4>
-          <label>Date From DB</label>         
-      </div>
     </div>
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="movie-info">
-            <h4>Summary</h4>
-            <p>
-              text from DB
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-              At accusamus quidem nulla nostrum consequatur voluptatibus error,
-              eaque consectetur vero aut repudiandae. Maxime cupiditate exercitationem 
-              animi tempora omnis possimus impedit! Dignissimos.
-            </p>
-          </div>
+  </div><br><br><br><br>
+  <div class="container-fluid mt-5 pt-5">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="movie-info">
+          <h4 class="h4" id="FilmSummary">Summary</h4><br>
+          <p id="Discription">
+            text from DB
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            At accusamus quidem nulla nostrum consequatur voluptatibus error,
+            eaque consectetur vero aut repudiandae. Maxime cupiditate exercitationem
+            animi tempora omnis possimus impedit! Dignissimos.
+          </p>
         </div>
-        <div class="col-md-4">
-          <div class="movie-info">
-            <h4>Genres</h4>
-            <p>Genres from DB</p>
-            <p>
-                <span class="badge badge-warning">Comady</span>
-                <span class="badge badge-warning">Family</span>
-                <span class="badge badge-warning">Drama</span>
-            </p>
-            <h4>Language </h4>
-            <p>Language from  DB</p>
-          </div>
+      </div>
+      <div class="col-md-4">
+        <div class="movie-info ">
+          <h4>Genres</h4>
+          <p>Genres from DB</p>
+          <p>
+            <span class="badge badge-warning" id="Comady">Comady</span>
+            <span class="badge badge-warning" id="Family">Family</span>
+            <span class="badge badge-warning" id="Drama">Drama</span>
+          </p>
+          <h4>Language </h4>
+          <p id="Language">Language from DB</p>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
+<footer class="footer container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <h5>About Us</h5>
+        <p>
+          Ut congue augue non tellus bibendum, in varius tellus condimentum.
+          In scelerisque nibh tortor, sed rhoncus odio condimentum in.
+          Sed sed est ut sapien ultrices eleifend. Integer tellus est, vehicula eu lectus tincidunt,
+          ultricies feugiat leo.
+          Suspendisse tellus elit, pharetra in hendrerit ut, aliquam quis augue.
+          Nam ut nibh mollis, tristique ante sed, viverra massa.
+        </p>
+
+      </div>
+      <div class="col-5 FooterDetails">
+        <br><br>
+        <div>
+          <p> <small>Street name and number</small> City, Country</p>
+        </div>
+        <div>
+          <p> (+00) 0000 000 000</p>
+        </div>
+        <div>
+          <p><a href="#"> office@company.com</a></p>
+        </div>
+      </div>
+      <div class="col-3 content-end">
+        <img class="Footerlogo center" src="src/Logo.png" alt="">
+        <h1 class="FooterlogoTitle">MovieLK</h1>
+      </div>
+
+    </div>
+  </div>
+  <div class="CopyRightDiv">
+    <p class="CopyRight"> MovieLK &copy; 2024</p>
+  </div>
+</footer>
+
 </html>
