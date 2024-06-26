@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="FooterStyle.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
@@ -42,7 +43,7 @@
             <h4 class="movie-heading">Movies</h4>
             <div class="row">
                 <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="">
+                    <a href="filmInterface.php">
                         <div class="card-flyer">
                             <div class="text-box">
                                 <div class="image-box">
@@ -56,7 +57,7 @@
                     </a>
                 </div>
                 <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="">
+                    <a href="filmInterface.php">
                         <div class="card-flyer">
                             <div class="text-box">
                                 <div class="image-box">
@@ -70,7 +71,7 @@
                     </a>
                 </div>
                 <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="">
+                    <a href="filmInterface.php">
                         <div class="card-flyer">
                             <div class="text-box">
                                 <div class="image-box">
@@ -86,7 +87,7 @@
                     </a>
                 </div>
                 <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="">
+                    <a href="filmInterface.php">
                         <div class="card-flyer">
                             <div class="text-box">
                                 <div class="image-box">
@@ -102,7 +103,7 @@
             </div>
             <div class="row">
                 <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="">
+                    <a href="filmInterface.php">
                         <div class="card-flyer">
                             <div class="text-box">
                                 <div class="image-box">
@@ -116,7 +117,7 @@
                     </a>
                 </div>
                 <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="">
+                    <a href="filmInterface.php">
                         <div class="card-flyer">
                             <div class="text-box">
                                 <div class="image-box">
@@ -130,7 +131,7 @@
                     </a>
                 </div>
                 <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="">
+                    <a href="filmInterface.php">
                         <div class="card-flyer">
                             <div class="text-box">
                                 <div class="image-box">
@@ -145,7 +146,7 @@
                     </a>
                 </div>
                 <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="">
+                    <a href="filmInterface.php">
                         <div class="card-flyer">
                             <div class="text-box">
                                 <div class="image-box">
