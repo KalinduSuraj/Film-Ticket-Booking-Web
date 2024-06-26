@@ -16,18 +16,18 @@
       height: 400px;
       color: white;
       display: flex;
-      align-items: end;
+      align-items: start;
       justify-content: center;
       flex-direction: column;
-      text-align: end;
+      text-align: start;
     }
 
 
 
     .movie-details {
       margin-top: -100px;
-      justify-content: end;
-      margin-right: 80px;
+      justify-content: start;
+      margin-left: 50px;
     }
 
     .movie-details img {
@@ -50,6 +50,7 @@
 
     .name-date {
       position: absolute;
+      text-align: end;
       left: 0;
       margin-top: 20px;
 
@@ -72,6 +73,18 @@
 
     .MovieInfoBody {
       background-color: azure;
+
+    }
+
+    .btnBooking {
+      border-radius: 5px;
+      border: 0;
+      height: 40px;
+      width: 130px;
+      color: black;
+      font-weight: bold;
+      font-size: 18px;
+
     }
   </style>
 </head>
@@ -84,11 +97,11 @@
       </div>
     </div>
 
-    <div class="name-date container"><br><br><br>
+    <div class="name-date container-fluid">
       <h4 id="MovieName" class="MovieName">Movie Name <label id="Date" class="DateLabel badge-warning">2024 May 06</label></h4>
-      <button class="btn btn-primary">BOOK TICKETS</button>
+      <button class="btnBooking btn-primary">Book Tickets</button>
     </div>
-  </div><br><br><br><br>
+  </div><br>
   <div class="container-fluid mt-5 pt-5">
     <div class="row">
       <div class="col-md-8">
