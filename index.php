@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="FooterStyle.css">
 
+    <!-- Bootstrap Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <!-- Bootstrap Bundle JS (includes Popper.js) -->
@@ -30,8 +32,8 @@
         </div>
 
         <div class="justify-content-end">
-            <a href="signIn.php"><button class="btns ">LogIn</button></a>
-            <a href="signUp.php"><button class="btns ">SignUp</button></a>
+            <a href="signIn.php"><button class=" btn btn-primary">LogIn</button></a>
+            <a href="signUp.php"><button class=" btn btn-primary">SignUp</button></a>
         </div>
 
     </nav>
@@ -175,7 +177,23 @@
                     ultricies feugiat leo.
                     Suspendisse tellus elit, pharetra in hendrerit ut, aliquam quis augue.
                     Nam ut nibh mollis, tristique ante sed, viverra massa.
-                </p>
+
+
+                </p><br>
+                <div class="d-flex ">
+                    <a href="#">
+                        <h5><i class="bi bi-twitter text-light me-3"></h5></i>
+                    </a>
+                    <a href="#">
+                        <h5><i class="bi bi-facebook text-light me-3"></h5></i>
+                    </a>
+                    <a href="#">
+                        <h5><i class="bi bi-instagram text-light me-3"></h5></i>
+                    </a>
+                    <a href="#">
+                        <h5><i class="bi bi-whatsapp text-light me-3"></h5></i>
+                    </a>
+                </div>
 
             </div>
             <div class="col-5 FooterDetails">
@@ -201,4 +219,5 @@
         <p class="CopyRight"> MovieLK &copy; 2024</p>
     </div>
 </footer>
+
 </html>
