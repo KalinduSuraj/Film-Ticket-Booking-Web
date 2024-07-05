@@ -1,12 +1,23 @@
 <?php
-    class DBConnection{
+class DBConnection {
+    private $connection;
 
-        public function Connection(){
-
-            //select server
-            $con=mysqli_connect("fdb1029.awardspace.net","4496320_movieticket","EB[scka]@45634");
-            //select DB
-            mysqli_select_db($con,"4496320_movieticket");
+    public function connect(){
+        $this->connection = mysqli_connect("localhost", "chanuka", "Chanuka@20021004", "movie_ticket_booking");
+        if (mysqli_connect_errno()) {
+            die("Database connection failed: " . mysqli_connect_error());
         }
     }
+    public function disconnect(){
+        if ($this->connection) {
+            mysqli_close($this->connection);
+            $this->connection = null; // Unset the connection object
+        }
+    }
+
+    // Method to get the connection object
+    public function getConnection(){
+        return $this->connection;
+    }
+}
 ?>

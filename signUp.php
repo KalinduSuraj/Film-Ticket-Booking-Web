@@ -86,7 +86,7 @@
           class="img-fluid " src="src/img1.png" alt="Register img">
       </div>
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <form>
+        <form method="post" action="#">
           <h1 class="text-center">Sign Up</h1>
           <!-- email input -->
           <div data-mdb-input-init class="form-outline mb-4 email">

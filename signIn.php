@@ -78,7 +78,7 @@
           class="img-fluid " src="src/img1.png" alt="Phone image">
       </div>
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <form>
+        <form method="POST" action="#">
           <h1 class="text-center">Sign In</h1>
           <!-- userName input -->
           <div data-mdb-input-init class="form-outline mb-4 userName">
@@ -116,7 +116,9 @@
 </html>
 
 <?php
-  if(isset($_POST["btnSignIn"])){
+  require_once 'Viewer.php';
+  require_once 'DBConnection.php';
+  if(isset($_POST["userName"])){
 
         if(empty($_POST["userName"]) || empty($_POST["password"]))
         {
@@ -124,34 +126,9 @@
         }
         else{
           $userName = $_POST["userName"];
-          $password = $_POST["password"];
-          
-          //! connection start=>
-          $conn = mysqli_connect("localhost","chanuka","Chanuka@20021004");
-
-          //! connection data bas=>
-          mysqli_select_db($conn,"");
-
-          //! perform queary=>
-          $query = "Select * From <table> where userName ='$userName' AND password = '$password'";
-          $result = mysqli_query($conn, $query);
-
-          if(mysqli_fetch_array($result)>0){//
-
-            if(isset($_POST["rememberMe"])){ //* set cookies-------------------------------------------------
-              //one mounth cookie
-              $expire = 30*24*3600;
-              setcookie("UserName","$userName",time()+$expire,"/","",0);
-              setcookie("Password","$password",time()+$expire,"/","",0);
-
-              //* start session-------------------------------------------------
-              session_start();
-              $_SESSION["UserName"] = $userName;
-            }
-          }
-          else{
-            echo "UserName or Password wrong!";
-          }         
+          $password = $_POST["password"];   
+          $viwer = new Viewer();   
+          $viwer->logIn($userName,$password);   
         }
   }
 ?>
