@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+  require_once '../BackEnd/Movie.php';
+  require_once '../BackEnd/DBConnection.php';
+
+  $obj = new Movie();
+  $F_Id = $_GET['F_Id'];
+  $filmData = $obj->ViewMovieForFilmInterface($F_Id);
+?>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +17,9 @@
   <link rel="stylesheet" href="FooterStyle.css">
   <style>
     .movie-banner {
-      background-image: url("src/banner1jpg.jpg");
+      background-image: url(<?php  foreach($filmData as $film){
+        echo "'" . $film['banner'] . "'";
+      }?>);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -44,10 +54,6 @@
       margin-bottom: -30px;
 
     }
-
-
-
-
     .name-date {
       position: absolute;
       text-align: end;
@@ -93,12 +99,24 @@
   <div class="container-fluid p-0">
     <div id="MovieBanner" class="movie-banner">
       <div class="movie-details">
-        <img id="MoviePoster" src="src/movie3.jpg" alt="Movie Poster" class="movie-poster rounded " />
+        <img id="MoviePoster" src='<?php  foreach($filmData as $film){
+                                      echo "'" . $film['poster'] . "'";
+                                    }?>' alt="Movie Poster" 
+                                    class="movie-poster rounded " />
       </div>
     </div>
 
     <div class="name-date container-fluid">
-      <h4 id="MovieName" class="MovieName">Movie Name <label id="Date" class="DateLabel badge-warning">2024 May 06</label></h4>
+      <h4 id="MovieName" class="MovieName">
+        <?php  foreach($filmData as $film){
+        echo "'" . $film['Name'] . "'";
+        }?>
+        <label id="Date" class="DateLabel badge-warning">
+          <?php  foreach($filmData as $film){
+            echo "'" . $film['Release_Date'] . "'";
+          }?>
+        </label>
+      </h4>
       <a href="BookingPage.php"><button class="btnBooking btn-primary">Book Tickets</button></a>
     </div>
   </div><br>
@@ -108,11 +126,9 @@
         <div class="movie-info">
           <h4 class="h4" id="FilmSummary">Summary</h4><br>
           <p id="Discription">
-            text from DB
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            At accusamus quidem nulla nostrum consequatur voluptatibus error,
-            eaque consectetur vero aut repudiandae. Maxime cupiditate exercitationem
-            animi tempora omnis possimus impedit! Dignissimos.
+            <?php  foreach($filmData as $film){
+              echo "'" . $film['Description'] . "'";
+            }?>
           </p>
         </div>
       </div>
@@ -126,50 +142,54 @@
             <span class="badge badge-warning" id="Drama">Drama</span>
           </p>
           <h4>Language </h4>
-          <p id="Language">Language from DB</p>
+          <p id="Language">
+            <?php  foreach($filmData as $film){
+              echo "'" . $film['Description'] . "'";
+            }?>
+          </p>
         </div>
       </div>
     </div>
   </div>
+  <footer class="footer container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <h5>About Us</h5>
+          <p>
+            Ut congue augue non tellus bibendum, in varius tellus condimentum.
+            In scelerisque nibh tortor, sed rhoncus odio condimentum in.
+            Sed sed est ut sapien ultrices eleifend. Integer tellus est, vehicula eu lectus tincidunt,
+            ultricies feugiat leo.
+            Suspendisse tellus elit, pharetra in hendrerit ut, aliquam quis augue.
+            Nam ut nibh mollis, tristique ante sed, viverra massa.
+          </p>
+  
+        </div>
+        <div class="col-5 FooterDetails">
+          <br><br>
+          <div>
+            <p> <small>Street name and number</small> City, Country</p>
+          </div>
+          <div>
+            <p> (+00) 0000 000 000</p>
+          </div>
+          <div>
+            <p><a href="#"> office@company.com</a></p>
+          </div>
+        </div>
+        <div class="col-3 content-end">
+          <img class="Footerlogo center" src="src/Logo.png" alt="">
+          <h1 class="FooterlogoTitle">MovieLK</h1>
+        </div>
+  
+      </div>
+    </div>
+    <div class="CopyRightDiv">
+      <p class="CopyRight"> MovieLK &copy; 2024</p>
+    </div>
+  </footer>
 </body>
 
-<footer class="footer container-fluid">
-  <div class="container">
-    <div class="row">
-      <div class="col-4">
-        <h5>About Us</h5>
-        <p>
-          Ut congue augue non tellus bibendum, in varius tellus condimentum.
-          In scelerisque nibh tortor, sed rhoncus odio condimentum in.
-          Sed sed est ut sapien ultrices eleifend. Integer tellus est, vehicula eu lectus tincidunt,
-          ultricies feugiat leo.
-          Suspendisse tellus elit, pharetra in hendrerit ut, aliquam quis augue.
-          Nam ut nibh mollis, tristique ante sed, viverra massa.
-        </p>
-
-      </div>
-      <div class="col-5 FooterDetails">
-        <br><br>
-        <div>
-          <p> <small>Street name and number</small> City, Country</p>
-        </div>
-        <div>
-          <p> (+00) 0000 000 000</p>
-        </div>
-        <div>
-          <p><a href="#"> office@company.com</a></p>
-        </div>
-      </div>
-      <div class="col-3 content-end">
-        <img class="Footerlogo center" src="src/Logo.png" alt="">
-        <h1 class="FooterlogoTitle">MovieLK</h1>
-      </div>
-
-    </div>
-  </div>
-  <div class="CopyRightDiv">
-    <p class="CopyRight"> MovieLK &copy; 2024</p>
-  </div>
-</footer>
 
 </html>

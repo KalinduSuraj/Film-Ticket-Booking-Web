@@ -165,6 +165,7 @@
         </div>
     </div>
 </body>
+<!-- footer -->
 <footer class="footer container-fluid">
     <div class="container">
         <div class="row">

@@ -1,6 +1,6 @@
 <?php
     class Movie {
-
+        //*--------------------------------------------------------|DONE|-------------------------------------------------------------
         private $db;
         public function __construct(){
             $this->db = new DBConnection();
@@ -15,7 +15,7 @@
 
                 if (!(mysqli_num_rows($res) == 1)) {
 
-                    $queary = "insert into film(F_Id,Name,Release_Year,Description,Language,Ticket_Price)
+                    $queary = "insert into film(F_Id,Name,Release_Year,Description,Language,Ticket_Price,poster,banner)
                             values('$filmId','$name','$releaseYear','$description','$language','$ticketPrice','$posterImg','$bannerImg);";
 
                     $result = mysqli_query($this->db->getConnection(),$queary);
@@ -83,27 +83,26 @@
         }
         public function ViewMovieForIndex(){
             try{
-                $queary = "Select Name,poster from film ";
+                $queary = "Select Name,poster,F_Id from film ";
                 $result = mysqli_query($this->db->getConnection(),$queary);
 
                 $output = '<div class="row">';
-                while($row = mysqli_fetch_array($result)){
 
+                while($row = mysqli_fetch_array($result)){
                    $output .= '<div class=" col-sm-6 col-md-3 col-lg-3">';
-                   $output .=     '<a href="filmInterface.php">';
-                   $output .=         '<div class="card-flyer">';
-                   $output .=             '<div class="text-box">';
-                   $output .=                '<div class="image-box">';
-                   $output .=                     "<img src='src/".$row['poster']."'/>";
-                   $output .=                 '</div>';
-                   $output .=                 '<div class="text-container">';
-                   $output .=                     '<h6>'.$row['Name'].'</h6>';
-                   $output .=                 '</div>';
-                   $output .=             '</div>';
-                   $output .=         '</div>';
-                   $output .=     '</a>';
+                   $output .= '<a href="filmInterface.php?F_Id=' . $row['F_Id'] . '">';
+                   $output .= '<div class="card-flyer">';
+                   $output .= '<div class="text-box">';
+                   $output .= '<div class="image-box">';
+                   $output .= "<img src='src/".$row['poster']."'/>";
                    $output .= '</div>';
-                   
+                   $output .= '<div class="text-container">';
+                   $output .= '<h6>'.$row['Name'].'</h6>';
+                   $output .= '</div>';
+                   $output .= '</div>';
+                   $output .= '</div>';
+                   $output .= '</a>';
+                   $output .= '</div>';
                 } 
                 $output .= '</div>';                
                 return $output;
@@ -116,7 +115,32 @@
                 $this->db->disconnect();
             }
         }
-        public function ViewMovieForFilmInterface(){}
+        public function ViewMovieForFilmInterface($F_Id){
+            try{
+                $queary = "Select * from film where F_Id =$F_Id ";
+                $result = mysqli_query($this->db->getConnection(),$queary);
+
+                while($row = mysqli_fetch_array($result)){
+                    $data[] = array(
+                        'Name' => $row['Name'],
+                        'Release_Year' => $row['Release_Year'],
+                        'Description'=> $row['Description'],,
+                        'Language'=> $row['Language'],,
+                        'Ticket_Price'=> $row['Ticket_Price'],
+                        'poster'=> $row['poster'],
+                        'banner'=> $row['banner']
+                    );
+                 }              
+                 return $data;
+            }
+            catch(exception $e){
+                echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
+                return false;
+            } 
+            finally{
+                $this->db->disconnect();
+            }
+        }
 
     }
 ?>
