@@ -27,17 +27,16 @@
         padding: 0;
         background: linear-gradient(100deg, #000915, #003465);
       }
-      .userImg {
-          width: 30px;
-          height: 30px;
-          margin-top: 10px;
-        }
-      .pwImg {
+      .input-imgs {
           width: 30px;
           height: 30px;
           margin-top: 10px;
         }
         .userName {
+          display: flex;
+          flex-direction: row;
+        }
+        .type{
           display: flex;
           flex-direction: row;
         }
@@ -47,7 +46,7 @@
         }
         .forget-pass {
           text-decoration: none;
-          color: #5b548a;
+          color: aquamarine;
         }
         .form-control {
           margin-left: 10px;
@@ -57,7 +56,7 @@
         }
         .create {
           text-decoration: none;
-          color: #5b548a;
+          color: aquamarine;
         }
         .create:hover {
           color: #1e7dea;
@@ -65,6 +64,14 @@
         .btn-signIn{
           background-color: #06d001 !important;
           border-color: #06d001;
+        }
+        .bg{
+			    background-color: #fdfeff47;
+			    -webkit-backdrop-filter: blur(5px);
+			    backdrop-filter: blur(5px);
+			    height: 100%;
+			    width: 100%;
+			    border-radius: 20px;
         }
     </style>
     <title>Sign In</title>
@@ -78,36 +85,43 @@
           class="img-fluid " src="src/img1.png" alt="Phone image">
       </div>
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <form method="POST" action="#">
-          <h1 class="text-center">Sign In</h1>
-          <!-- userName input -->
-          <div data-mdb-input-init class="form-outline mb-4 userName">
-            <img src="src/User.png" alt="user" class="userImg">
-            <input type="text" name="userName" class="form-control form-control-lg" placeholder="UserName"/>
-          </div>
-
-          <!-- Password input -->
-          <div data-mdb-input-init class="form-outline mb-4 password">
-          <img src="src/Padlock.png" alt="pw" class="pwImg">
-            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password"/>
-          </div>
-
-          <div class="d-flex justify-content-around align-items-center mb-4">
-            <!-- Checkbox -->
-            <div>
-              <input class="form-check-input" type="checkbox" value="" name="rememberMe" checked />
-              <label class="form-check-label" for="form1Example3"> Remember me </label>
-            </div>
-            <div class="forget-create">
-                <div class="col " id="other">
-                    <div class="row"><a href="#!" class="forget-pass">Forgot password?</a></div>
-                    <div class="row"> <label>No Account?<a href="signUp.php" class="create"> Create</a></label> </div>
+        <div class="bg">
+          <form method="POST" action="#">
+            <h1 class="text-center">Sign In</h1>
+              <!-- userName input -->
+              <div data-mdb-input-init class="form-outline  userName m-4">
+                <img src="src/User.png" alt="user" class="input-imgs">
+                <input type="text" name="userName" class="form-control form-control-lg" placeholder="UserName"/>
+              </div>
+    
+              <!-- Password input -->
+              <div data-mdb-input-init class="form-outline mb-4 password mx-4">
+              <img src="src/Padlock.png" alt="pw" class="input-imgs">
+                <input type="password" name="password" class="form-control form-control-lg" placeholder="Password"/>
+              </div>
+    
+              <div class="d-flex justify-content-around align-items-center mb-4 mx-4">
+                <!-- Checkbox -->
+                <div>
+                  <input class="form-check-input" type="checkbox" value="" name="rememberMe" checked />
+                  <label class="form-check-label" for="form1Example3"> Remember me </label>
+                </div>
+                <!--|combo box|-->
+    
+    
+                <div class="forget-create mx-4">
+                    <div class="col " id="other">
+                        <div class="row"><a href="#!" class="forget-pass">Forgot password?</a></div>
+                        <div class="row"> <label>No Account?<a href="signUp.php" class="create"> Create</a></label> </div>
+                    </div>
                 </div>
             </div>
-          </div>
-          <!-- Submit button -->
-          <button type="submit"class="btn btn-primary btn-lg btn-block btn-signIn" name="btnSignIn">Sign in</button>
-        </form>
+            <!-- Submit button -->
+             <div class="d-flex justify-content-center">
+               <button type="submit"class="btn btn-primary btn-lg btn-block btn-signIn m-4" name="btnSignIn">Sign in</button>
+             </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -116,9 +130,9 @@
 </html>
 
 <?php
-  require_once 'Viewer.php';
-  require_once 'Admin.php';
-  require_once 'DBConnection.php';
+  require_once '../BackEnd/Viewer.php';
+  require_once '../BackEnd/Admin.php';
+  require_once '../BackEnd/DBConnection.php';
   if(isset($_POST["userName"])){
 
         if(empty($_POST["userName"]) || empty($_POST["password"]))
@@ -130,19 +144,13 @@
           $userName = $_POST["userName"];
           $password = $_POST["password"];  
           $rememberMe = $_POST["rememberMe"];
-
-          if(substr("$userName",0,1)=="V"){
-            $viwer = new Viewer();   
-            $viwer->logIn($userName,$password);
-          }
-          else if(substr("$userName",0,1)=="A"){
-            $admin = new Admin();   
-            $admin->logIn($userName,$password);
+          $viwer = new Viewer();   
+          $viwer->logIn($userName,$password);
           }
           
           
           //*------ start the session
-          session_start();
+          //session_start();
         }
-  }
+  
 ?>
