@@ -43,7 +43,7 @@
     <div class="cards_landscape_wrap-2">
         <div class="container">
             <h4 class="movie-heading">Movies</h4>
-            <div class="row">
+            <!-- <div class="row">
                 <div class=" col-sm-6 col-md-3 col-lg-3">
                     <a href="filmInterface.php">
                         <div class="card-flyer">
@@ -161,7 +161,7 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </body>
@@ -221,3 +221,12 @@
 </footer>
 
 </html>
+<?php
+    if(isset($_POST["name"])){
+  
+        $img = $_FILES["img"]["name"];
+        $temp = $_FILES["img"]["tmp_name"];
+    }
+
+
+?>

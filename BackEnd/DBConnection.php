@@ -1,5 +1,6 @@
 <?php
 class DBConnection {
+    //*------------------------------------------------|DONE|----------------------------------------------
     private $connection;
 
     public function connect(){

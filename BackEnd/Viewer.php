@@ -2,7 +2,7 @@
 
     class Viewer{
 
-        protected $db;
+        private $db;
         public function __construct(){
 
             $this->db = new DBConnection();
@@ -43,7 +43,7 @@
                 
             }
         }
-        public function registration($userName,$password,$name,$viwerId,$email,$contactNo){
+        public function registration($viwerId,$userName,$name,$email,$password,$contactNo){
             try{
 
                 $q = "select UserName from viwer where UserName='$userName'";
@@ -66,7 +66,7 @@
                     return true;
                 } 
                 else {
-                    echo "<script> console.log('not Added'); </script>"; 
+                    echo "<script> console.log('there is the Viewer in this $userName'); </script>"; 
                     return false;
                 } 
                 
