@@ -17,9 +17,7 @@
   <link rel="stylesheet" href="FooterStyle.css">
   <style>
     .movie-banner {
-      background-image: url(<?php  foreach($filmData as $film){
-        echo "'" . $film['banner'] . "'";
-      }?>);
+      background-image: url(<?php echo "'" . $filmData.['banner'] . "'";?>);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -99,22 +97,15 @@
   <div class="container-fluid p-0">
     <div id="MovieBanner" class="movie-banner">
       <div class="movie-details">
-        <img id="MoviePoster" src='<?php  foreach($filmData as $film){
-                                      echo "'" . $film['poster'] . "'";
-                                    }?>' alt="Movie Poster" 
-                                    class="movie-poster rounded " />
+        <img id="MoviePoster" src='<?php  echo "'" . $filmData.['poster'] . "'";?>' alt="Movie Poster" class="movie-poster rounded " />
       </div>
     </div>
 
     <div class="name-date container-fluid">
       <h4 id="MovieName" class="MovieName">
-        <?php  foreach($filmData as $film){
-        echo "'" . $film['Name'] . "'";
-        }?>
+        <?php echo "'" . $filmData.['Name'] . "'";?>
         <label id="Date" class="DateLabel badge-warning">
-          <?php  foreach($filmData as $film){
-            echo "'" . $film['Release_Date'] . "'";
-          }?>
+          <?php echo "'" . $filmData.['Release_Date'] . "'";?>
         </label>
       </h4>
       <a href="BookingPage.php"><button class="btnBooking btn-primary">Book Tickets</button></a>
@@ -126,9 +117,7 @@
         <div class="movie-info">
           <h4 class="h4" id="FilmSummary">Summary</h4><br>
           <p id="Discription">
-            <?php  foreach($filmData as $film){
-              echo "'" . $film['Description'] . "'";
-            }?>
+            <?php  echo "'" . $filmData.['Description'] . "'";?>
           </p>
         </div>
       </div>
@@ -143,9 +132,7 @@
           </p>
           <h4>Language </h4>
           <p id="Language">
-            <?php  foreach($filmData as $film){
-              echo "'" . $film['Description'] . "'";
-            }?>
+            <?php  echo "'" . $filmData.['Language'] . "'";?>
           </p>
         </div>
       </div>

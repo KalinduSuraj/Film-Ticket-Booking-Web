@@ -130,8 +130,7 @@
 </html>
 
 <?php
-  require_once '../BackEnd/Viewer.php';
-  require_once '../BackEnd/Admin.php';
+  require_once '../BackEnd/User.php';
   require_once '../BackEnd/DBConnection.php';
   if(isset($_POST["userName"])){
 
@@ -144,8 +143,8 @@
           $userName = $_POST["userName"];
           $password = $_POST["password"];  
           $rememberMe = $_POST["rememberMe"];
-          $viwer = new Viewer();   
-          $viwer->logIn($userName,$password);
+          $user = new User();
+          $user->logIn($userName,$password);
           }
           
           

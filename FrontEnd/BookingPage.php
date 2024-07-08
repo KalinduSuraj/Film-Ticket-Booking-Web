@@ -18,13 +18,7 @@
     <style>
         
     </style>
-</head>
-<body>
-   
-
-
-
-    <!-- Footer Start -->
+</head>    <!-- Footer Start -->
     <footer class="footer container-fluid">
         <div class="container">
             <div class="row">

@@ -5,9 +5,13 @@ class DBConnection {
 
     public function connect(){
         $this->connection = mysqli_connect("localhost", "chanuka", "Chanuka@20021004", "movie_ticket_booking");
-        if (mysqli_connect_errno()) {
-            die("Database connection failed: " . mysqli_connect_error());
+
+        //freesqldatabase.com
+        //$this->connection = mysqli_connect("sql12.freesqldatabase.com", "sql12718492", "DwnP2Mt8rg", "sql12718492");
+        if (!$this->connection) {
+            echo "Connection failed: " . mysqli_connect_error();
         }
+        
     }
     public function disconnect(){
         if ($this->connection) {

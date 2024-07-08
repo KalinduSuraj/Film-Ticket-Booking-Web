@@ -120,18 +120,19 @@
                 $queary = "Select * from film where F_Id =$F_Id ";
                 $result = mysqli_query($this->db->getConnection(),$queary);
 
-                while($row = mysqli_fetch_array($result)){
-                    $data[] = array(
-                        'Name' => $row['Name'],
-                        'Release_Year' => $row['Release_Year'],
-                        'Description'=> $row['Description'],,
-                        'Language'=> $row['Language'],,
-                        'Ticket_Price'=> $row['Ticket_Price'],
-                        'poster'=> $row['poster'],
-                        'banner'=> $row['banner']
-                    );
-                 }              
-                 return $data;
+                // while($row = mysqli_fetch_array($result)){
+                //     $data[] = array(
+                //         'Name' => $row['Name'],
+                //         'Release_Year' => $row['Release_Year'],
+                //         'Description'=> $row['Description'],
+                //         'Language'=> $row['Language'],
+                //         'Ticket_Price'=> $row['Ticket_Price'],
+                //         'poster'=> $row['poster'],
+                //         'banner'=> $row['banner']
+                //     );
+                //  }  
+                $row = mysqli_fetch_array($result);            
+                return $row;
             }
             catch(exception $e){
                 echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";

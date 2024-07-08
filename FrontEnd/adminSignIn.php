@@ -142,32 +142,32 @@
 
 
 <?php
-  require_once 'Viewer.php';
-  require_once 'Admin.php';
-  require_once 'DBConnection.php';
-  if(isset($_POST["userName"])){
+//   require_once 'Viewer.php';
+//   require_once 'Admin.php';
+//   require_once 'DBConnection.php';
+//   if(isset($_POST["userName"])){
 
-        if(empty($_POST["userName"]) || empty($_POST["password"]))
-        {
-          echo"<script>alert('Please Enter Data into Feilds');</script>";
-        }
-        else{
-          //*------ grab the data from form
-          $userName = $_POST["userName"];
-          $password = $_POST["password"];  
-         // $rememberMe = $_POST["rememberMe"];
-          if(substr("",0,1)=="V"){
-            $viwer = new Viewer();   
-            $viwer->logIn($userName,$password);
-          }
-          else if(substr("",0,1)=="A"){
-            $admin = new Admin();   
-            $admin->logIn($userName,$password);
-          }
+//         if(empty($_POST["userName"]) || empty($_POST["password"]))
+//         {
+//           echo"<script>alert('Please Enter Data into Feilds');</script>";
+//         }
+//         else{
+//           //*------ grab the data from form
+//           $userName = $_POST["userName"];
+//           $password = $_POST["password"];  
+//          // $rememberMe = $_POST["rememberMe"];
+//           if(substr("",0,1)=="V"){
+//             $viwer = new Viewer();   
+//             $viwer->logIn($userName,$password);
+//           }
+//           else if(substr("",0,1)=="A"){
+//             $admin = new Admin();   
+//             $admin->logIn($userName,$password);
+//           }
           
           
-          //*------ start the session
-          session_start();
-        }
-  }
+//           //*------ start the session
+//           session_start();
+//         }
+//   }
 ?>
