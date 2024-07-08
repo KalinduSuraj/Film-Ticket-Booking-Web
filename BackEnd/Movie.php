@@ -7,38 +7,41 @@
             $this->db->connect();
         }
         //methods
-        public function AddMovie($filmId,$name,$releaseYear,$description,$language,$ticketPrice,$posterImg,$tempPosterImg,$bannerImg,$tempBannerImg){
+        public function AddMovie($name,$releaseYear,$description,$language,$ticketPrice,$posterImg,$tempPosterImg,$bannerImg,$tempBannerImg){
 
             try{
-                $q = "select F_Id from film where F_Id = '$filmId';";
-                $res = mysqli_query($this->db->getConnection(),$q);
+                $q1 = "SELECT MAX(F_Id) from film";
+                $r = mysqli_query($this->db->getConnection(),$q1);
+                if ($row = mysqli_fetch_array($r)) {
+                $maxId = $row[0];
+                $numericPart = intval(substr($maxId, 1));
+                $newNumericPart = $numericPart + 1;
+                
+                $filmId = 'F' . str_pad($newNumericPart, 3, '0', STR_PAD_LEFT);
+                } 
+                else
+                {
+                $filmId = 'F001';
+                }
+                $queary = "insert into film(F_Id,Name,Relese_Year,Description,Language,Ticket_Price,poster,banner)
+                        values('$filmId','$name','$releaseYear','$description','$language','$ticketPrice','$posterImg','$bannerImg');";
 
-                if (!(mysqli_num_rows($res) == 1)) {
+                $result = mysqli_query($this->db->getConnection(),$queary);
 
-                    $queary = "insert into film(F_Id,Name,Release_Year,Description,Language,Ticket_Price,poster,banner)
-                            values('$filmId','$name','$releaseYear','$description','$language','$ticketPrice','$posterImg','$bannerImg);";
-
-                    $result = mysqli_query($this->db->getConnection(),$queary);
-
-                    if($result){
-                        $posterPath = "posterImg/".$posterImg;
-                        $bannerPath = "bannerImg/".$bannerImg;
-                        if(move_uploaded_file($tempPosterImg,$posterPath) && move_uploaded_file($tempBannerImg,$bannerPath)){
-                            echo "<script> console.log('Added'); </script>"; 
-                        }
-                        else{
-                            echo "Failed to upload image!";
-                        }
+                if($result){
+                    $posterPath = "posterImg/".$posterImg;
+                    $bannerPath = "bannerImg/".$bannerImg;
+                    if(move_uploaded_file($tempPosterImg,$posterPath) && move_uploaded_file($tempBannerImg,$bannerPath)){
+                        echo "<script> console.log('Added'); </script>"; 
                     }
                     else{
-                        echo "<script> console.log('not Added'); </script>"; 
+                        echo "Failed to upload image!";
                     }
-                    return true;
-                } 
-                else {
-                    echo "<script> console.log('Already have a Movie in this $filmId Id!!'); </script>"; 
-                    return false;
-                } 
+                }
+                else{
+                    echo "<script> console.log('not Added'); </script>"; 
+                }
+                return true;
             }
             catch(exception $e){
                 echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";

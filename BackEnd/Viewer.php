@@ -65,6 +65,5 @@ class Viewer extends User{
                     $this->db->disconnect();
                 }
             }
-            public function forgetPassword(){}
-        }
+    }
         
