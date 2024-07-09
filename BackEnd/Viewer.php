@@ -12,7 +12,6 @@ class Viewer extends User{
         $this->db->connect(); 
         
     }
-    
     public function registration($userName,$name,$email,$password,$contactNo){ 
         try{
             $q1 = "SELECT MAX(User_Id) from user";
@@ -30,7 +29,6 @@ class Viewer extends User{
             
             $res = mysqli_query($this->db->getConnection(),$q2);
             if (!(mysqli_num_rows($res) == 1)) {
-
                 //inner join
                 $queary2 = "insert into viewer(User_Id,Name,Contact_No)
                 values('$userId','$name','$contactNo');";
@@ -43,6 +41,7 @@ class Viewer extends User{
                 if($result1 && $result2)
                 {
                     echo "<script> console.log('Added'); </script>"; 
+                    header("Location: signIn.php");
                 }
                 else
                 {

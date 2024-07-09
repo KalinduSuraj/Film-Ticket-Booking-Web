@@ -141,7 +141,6 @@
             }
         }
         
-
         public function ViewMovieForRemovePage(){
             try{
                 $queary = "Select F_Id,Name,Relese_Year,Language from film ";
