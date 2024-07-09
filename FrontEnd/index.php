@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,11 +33,23 @@
         <div>
             <h1 class="logoTitle ">MovieLK</h1>
         </div>
-
-        <div class="justify-content-end">
-            <a href="signIn.php"><button class=" btn btn-primary">LogIn</button></a>
-            <a href="signUp.php"><button class=" btn btn-primary">SignUp</button></a>
-        </div>
+        <?php 
+         
+            if (isset($_SESSION['userName'])) {
+                echo '<div class="justify-content-end">
+                        <div class="d-flex align-items-center">
+                            <p class="mb-0 me-3 text-white log-out "> Welcome: '.$_SESSION['userName'].'</p>
+                            <button class="btn btn-primary" onclick="confirmLogout()">Logout</button>
+                        </div>
+                      </div>';
+                
+            } else {
+                echo '<div class="justify-content-end">
+                        <a href="signIn.php"><button class="btn btn-primary">LogIn</button></a>
+                        <a href="signUp.php"><button class="btn btn-primary">SignUp</button></a>
+                      </div>';
+            }
+        ?>
 
     </nav>
 </div>
@@ -49,127 +64,17 @@
                 $obj = new Movie();
                echo $obj->ViewMovieForIndex();
             ?>
-            <!-- <div class="row">
-                <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="filmInterface.php">
-                        <div class="card-flyer">
-                            <div class="text-box">
-                                <div class="image-box">
-                                    <img src="src/movie1.jpg" alt="" />
-                                </div>
-                                <div class="text-container">
-                                    <h6>Deadpool & Wolverine</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="filmInterface.php">
-                        <div class="card-flyer">
-                            <div class="text-box">
-                                <div class="image-box">
-                                    <img src="src/movie2.jpg" alt="" />
-                                </div>
-                                <div class="text-container">
-                                    <h6>Fall Guy</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="filmInterface.php">
-                        <div class="card-flyer">
-                            <div class="text-box">
-                                <div class="image-box">
-                                    <img src="src/movie3.jpg" alt="" />
-                                </div>
-
-                                <div class="text-container">
-                                    <h6>IF</h6>
-
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="filmInterface.php">
-                        <div class="card-flyer">
-                            <div class="text-box">
-                                <div class="image-box">
-                                    <img src="src/movie4.jpg" alt="" />
-                                </div>
-                                <div class="text-container">
-                                    <h6>The Strangers</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="filmInterface.php">
-                        <div class="card-flyer">
-                            <div class="text-box">
-                                <div class="image-box">
-                                    <img src="src/movie5.jpg" alt="" />
-                                </div>
-                                <div class="text-container">
-                                    <h6>Longlegs 7.12</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="filmInterface.php">
-                        <div class="card-flyer">
-                            <div class="text-box">
-                                <div class="image-box">
-                                    <img src="src/movie6.jpg" alt="" />
-                                </div>
-                                <div class="text-container">
-                                    <h6>Inside Out 2</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="filmInterface.php">
-                        <div class="card-flyer">
-                            <div class="text-box">
-                                <div class="image-box">
-                                    <img src="src/movie7.jpg" alt="" />
-                                </div>
-
-                                <div class="text-container">
-                                    <h6>Bad Boys</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class=" col-sm-6 col-md-3 col-lg-3">
-                    <a href="filmInterface.php">
-                        <div class="card-flyer">
-                            <div class="text-box">
-                                <div class="image-box">
-                                    <img src="src/movie8.jpg" alt="" />
-                                </div>
-                                <div class="text-container">
-                                    <h6>Planet of the Apes</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div> -->
         </div>
     </div>
+    <script>
+        function confirmLogout() {
+            if (confirm('Are you sure you want to log out?')) {
+                window.location.href = 'logOut.php';
+            } else {
+                window.location.href = 'index.php';
+            }
+        }
+    </script>
 </body>
 <!-- footer -->
 <footer class="footer container-fluid">

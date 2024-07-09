@@ -22,18 +22,17 @@
                     $userId = $row['User_Id'];
                     echo "<script>console.log('Login successful');</script>";
                     $userType = substr($userId, 0, 1);
-
+                    session_start();
+                    $_SESSION['userName'] = $userName;
+                    $_SESSION['userName'];
                     if ($userType == "V") {
-                        echo "<script>console.log('Viewer');</script>";
-                        //header('Location: ../FrontEnd/index.php');
                         echo "<script type='text/javascript'>window.location.href = '../FrontEnd/index.php';</script>";
-                        session_start();
-
-                        //change the nav bar user
+                        
                         exit();
                     } else if ($userType == 'A') {
-                        echo "<script>console.log('Admin');</script>";
-                        session_start();
+                        
+                        echo "<script type='text/javascript'>window.location.href = '../FrontEnd/adminPanel.php';</script>";
+                        
                     }
 
                     return true;

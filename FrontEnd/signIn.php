@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,11 +148,10 @@
           $rememberMe = $_POST["rememberMe"];
           $user = new User();
           $user->logIn($userName,$password);
+          
           }
           
           
-          //*------ start the session
-          //session_start();
         }
   
 ?>
