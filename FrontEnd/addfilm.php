@@ -93,7 +93,7 @@ if(isset($_POST['btnSubmit'])){
         $result = $movie->AddMovie($name, $year, $description, $language, $price, $posterImg, $posterTemp, $bannerImg, $bannerTemp);
 
         if ($result) {
-            echo "<script> console.log('Movie added successfully'); </script>";
+            echo "<script> alert('Movie added successfully'); </script>";
         } else {
             echo "<script> console.log('Failed to add movie'); </script>";
         }

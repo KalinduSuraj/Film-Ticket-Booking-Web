@@ -93,14 +93,14 @@
 
                 while($row = mysqli_fetch_array($result)){
                    $output .= '<div class=" col-sm-6 col-md-3 col-lg-3">';
-                   $output .= '<a href="filmInterface.php?F_Id=' . $row['F_Id'] . '">';
+                   $output .= '<a href="filmInterface.php?F_Id=' . $row[2] . '">';
                    $output .= '<div class="card-flyer">';
                    $output .= '<div class="text-box">';
                    $output .= '<div class="image-box">';
-                   $output .= "<img src='src/".$row['poster']."'/>";
+                   $output .= "<img src='../FrontEnd/posterImg/".$row[1]."'/>";
                    $output .= '</div>';
                    $output .= '<div class="text-container">';
-                   $output .= '<h6>'.$row['Name'].'</h6>';
+                   $output .= '<h6>'.$row[0].'</h6>';
                    $output .= '</div>';
                    $output .= '</div>';
                    $output .= '</div>';
@@ -119,23 +119,38 @@
             }
         }
         public function ViewMovieForFilmInterface($F_Id){
-            try{
-                $queary = "Select * from film where F_Id =$F_Id ";
-                $result = mysqli_query($this->db->getConnection(),$queary);
-
-                // while($row = mysqli_fetch_array($result)){
-                //     $data[] = array(
-                //         'Name' => $row['Name'],
-                //         'Release_Year' => $row['Release_Year'],
-                //         'Description'=> $row['Description'],
-                //         'Language'=> $row['Language'],
-                //         'Ticket_Price'=> $row['Ticket_Price'],
-                //         'poster'=> $row['poster'],
-                //         'banner'=> $row['banner']
-                //     );
-                //  }  
-                $row = mysqli_fetch_array($result);            
+            try {
+                $query = "SELECT * FROM film WHERE F_Id ='$F_Id'";
+                $result = mysqli_query($this->db->getConnection(), $query);
+        
+                if (!$result) {
+                    throw new Exception("Database Query Failed");
+                }
+        
+                $row = mysqli_fetch_array($result);
+                if (!$row) {
+                    throw new Exception("No data found for F_Id: $F_Id");
+                }
+                
                 return $row;
+            } catch (Exception $e) {
+                echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
+                return false;
+            } finally {
+                $this->db->disconnect();
+            }
+        }
+        
+
+        public function ViewMovieForRemovePage(){
+            try{
+                $queary = "Select F_Id,Name,Relese_Year,Language from film ";
+                $result = mysqli_query($this->db->getConnection(),$queary);
+                $movieList = [];
+                while($row = mysqli_fetch_assoc($result)){
+                    $movieList[] = $row;
+                }
+                return $movieList;
             }
             catch(exception $e){
                 echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
