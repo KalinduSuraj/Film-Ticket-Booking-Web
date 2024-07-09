@@ -76,7 +76,7 @@
 		<div class="row d-flex" style="height: 50px; background-color:#121b30; color:white ; font-size: 24px;">
 			<div class="container d-flex">
 				<div class="col-6"><p class="p1">Admin Dashboard</p></div>
-				<div class="col d-flex justify-content-end"><p class="p1"> MovieLK</p><img src="pic/Logo.png" style="height:50px;width:50px;"></div>
+				<div class="col d-flex justify-content-end"><p class="p1"> MovieLK</p><img src="src/Logo.png" style="height:50px;width:50px;"></div>
 			</div>
 		</div>
 <!-- ------------------------------------------

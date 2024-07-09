@@ -153,13 +153,14 @@
                     $output .= "  <td>". $row['Name']."</td>";
                     $output .= "  <td>". $row['Relese_Year']."</td>";
                     $output .= "  <td>". $row['Language']."</td>";
-                    $output .= "<td><a data-number='filmId' class='rounded' style='background-color: red; color: white;' type='button' name='Remove' value='Remove' href='../BackEnd/path_to_php_file.php?F_Id=" . $row['F_Id'] . "'>Remove</a></td>";
+                    $output .= "<td><button data-number='filmId' class='rounded' style='background-color: red;border:none; color: white;text-decoration:none;' name='Remove' value='Remove' href='#' onclick='removeMovie(\"" . $row['F_Id'] . "\")'>Remove</button></td>";
+
                     $output .= "</tr>";
                 }
                 return $output;
             }
             catch(exception $e){
-                echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
+                echo "<script> console.log('Error: " . $e->getMessage() . "'); </>";
                 return null;
             } 
             finally{

@@ -6,8 +6,8 @@ if(isset($_GET['F_Id'])) {
     $filmId = $_GET['F_Id'];
     $obj->RemoveMovie($filmId);
     echo "<script type='text/javascript'>
-    alert('Movie Removed Successfully!');
-    window.location.href = '../FrontEnd/removeFilm.php';</script>";
+    alert('Movie Removed Successfully!')</script>";
+    echo "<script> window.location.href = '../FrontEnd/removeFilm.php'; </script>";
                         
 } else {
     echo "Error: filmId not provided";

@@ -21,6 +21,7 @@
 				      <th scope="col">Language</th>
 				      <th scope="col">Year</th>
 				      <th scope="col">Remove</th>
+				      <th scope="col">Edit</th>
 				    </tr>
 					<?php
 						require_once "../BackEnd/Movie.php";
@@ -33,17 +34,27 @@
 				 
 				</table>
 		</div>
+
+		<div id="edit-table">
+
+		</div>
 	</div>
 
 <!-- --------------------
 	java Script
 -------------------- !-->
 <script>
-	function removeMovie(filmId){
-    window.location.href = '../BackEnd/path_to_php_file.php?filmId=' + filmId;
+// JavaScript functions for edit and remove
+function removeMovie(filmId) {
+    if (confirm("Are you sure you want to remove this movie?")) {
+        window.location.href = "../BackEnd/path_to_php_file.php?F_Id=" + encodeURIComponent(filmId);
+    }
+
 }
 
+
 </script>
+
 
 
 </body>
