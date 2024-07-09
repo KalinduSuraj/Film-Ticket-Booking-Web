@@ -87,7 +87,7 @@
 				<div id="mySidenav" class="sidebar ">
 					  <a href="javascript:void(0)" class="closebtn a2" onclick="closeNav()">&#9776;</a>
 					  <a class="a1" id="addFilms" href="#" onclick="toggle1()">Add films</a>
-					  <a class="a1" id="removeFilms" href="#">Remove films</a>
+					  <a class="a1" id="removeFilms" href="#" onclick="toggle2()">Remove films</a>
 					  
 					</div>
 					<span style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776; </span>
@@ -97,7 +97,7 @@
  		form load
 ------------------------------------------ !-->
 			<div class="col ">
-					<iframe  src="addfilm.php" id="main" style=" margin-Left:200px; width: 100%; height: 1000px;">
+					<iframe  src="addfilm.php" id="main" style=" margin-Left:200px;margin-top:0px; width: 85%; height: 500px;">
 					</iframe>
 			</div>
 
@@ -117,6 +117,10 @@
 		}
 		function toggle1(){
 			document.getElementById("main").src="addfilm.php";
+
+		}
+		function toggle2(){
+			document.getElementById("main").src="removeFilm.php";
 
 		}
 		</script>

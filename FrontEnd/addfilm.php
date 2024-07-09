@@ -39,6 +39,12 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Genre: </td>
+                    <td>
+                        <input class="whset" type="text" name="genre" id="genre">
+                    </td>
+                </tr>
+                <tr>
                     <td>Select language: </td>
                     <td>
                         <select class="whset" id="language" name="language">
@@ -77,20 +83,21 @@ require_once "../BackEnd/Movie.php";
 require_once "../BackEnd/DBConnection.php";
 
 if(isset($_POST['btnSubmit'])){
-    if(!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['year']) && !empty($_POST['language']) && !empty($_POST['price']) && !empty($_FILES['poster']['name']) && !empty($_FILES['banner']['name'])){
+    if(!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['year']) && !empty($_POST['language']) && !empty($_POST['price']) &&!empty($_POST['genre']) &&  !empty($_FILES['poster']['name']) && !empty($_FILES['banner']['name'])){
 
         $name = $_POST["name"];
         $description = $_POST["description"];
         $year = $_POST["year"];
         $language = $_POST["language"];
         $price = $_POST["price"];
+        $genre = $_POST["genre"];
         $posterImg = $_FILES["poster"]["name"];
         $posterTemp = $_FILES["poster"]["tmp_name"];
         $bannerImg = $_FILES["banner"]["name"];
         $bannerTemp = $_FILES["banner"]["tmp_name"];
 
         $movie = new Movie();
-        $result = $movie->AddMovie($name, $year, $description, $language, $price, $posterImg, $posterTemp, $bannerImg, $bannerTemp);
+        $result = $movie->AddMovie($name, $year, $description, $language, $price,$genre, $posterImg, $posterTemp, $bannerImg, $bannerTemp);
 
         if ($result) {
             echo "<script> alert('Movie added successfully'); </script>";

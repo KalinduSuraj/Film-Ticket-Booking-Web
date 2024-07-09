@@ -7,7 +7,7 @@
             $this->db->connect();
         }
         //methods
-        public function AddMovie($name,$releaseYear,$description,$language,$ticketPrice,$posterImg,$tempPosterImg,$bannerImg,$tempBannerImg){
+        public function AddMovie($name,$releaseYear,$description,$language,$ticketPrice,$genre,$posterImg,$tempPosterImg,$bannerImg,$tempBannerImg){
 
             try{
                 $q1 = "SELECT MAX(F_Id) from film";
@@ -23,8 +23,8 @@
                 {
                 $filmId = 'F001';
                 }
-                $queary = "insert into film(F_Id,Name,Relese_Year,Description,Language,Ticket_Price,poster,banner)
-                        values('$filmId','$name','$releaseYear','$description','$language','$ticketPrice','$posterImg','$bannerImg');";
+                $queary = "insert into film(F_Id,Name,Relese_Year,Description,Language,Ticket_Price,poster,banner,Genre)
+                        values('$filmId','$name','$releaseYear','$description','$language','$ticketPrice','$posterImg','$bannerImg','$genre');";
 
                 $result = mysqli_query($this->db->getConnection(),$queary);
 
@@ -146,15 +146,21 @@
             try{
                 $queary = "Select F_Id,Name,Relese_Year,Language from film ";
                 $result = mysqli_query($this->db->getConnection(),$queary);
-                $movieList = [];
+                $output = ""; // Initialize $output as an empty string
                 while($row = mysqli_fetch_assoc($result)){
-                    $movieList[] = $row;
+                    $output .= "<tr id='row-{$row['F_Id']}'>";
+                    $output .= "  <td>". $row['F_Id']."</td>";
+                    $output .= "  <td>". $row['Name']."</td>";
+                    $output .= "  <td>". $row['Relese_Year']."</td>";
+                    $output .= "  <td>". $row['Language']."</td>";
+                    $output .= "<td><a data-number='filmId' class='rounded' style='background-color: red; color: white;' type='button' name='Remove' value='Remove' href='../BackEnd/path_to_php_file.php?F_Id=" . $row['F_Id'] . "'>Remove</a></td>";
+                    $output .= "</tr>";
                 }
-                return $movieList;
+                return $output;
             }
             catch(exception $e){
                 echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
-                return false;
+                return null;
             } 
             finally{
                 $this->db->disconnect();

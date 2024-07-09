@@ -40,7 +40,8 @@
 
     .movie-details img {
       margin-top: 400px;
-      width: 40%;
+      width: 200px;
+      border:4px solid white;
     }
 
     .movie-info {
@@ -128,9 +129,7 @@
           <h4>Genres</h4>
           <p>Genres from DB</p>
           <p>
-            <span class="badge badge-warning" id="Comady">Comady</span>
-            <span class="badge badge-warning" id="Family">Family</span>
-            <span class="badge badge-warning" id="Drama">Drama</span>
+            <span class="badge badge-warning" id=""><?php echo  $filmData['Genre'];?></span>
           </p>
           <h4>Language </h4>
           <p id="Language">
