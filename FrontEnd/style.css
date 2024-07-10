@@ -111,26 +111,25 @@ body {
   width: 70px;
   border-radius: 10px;
   background-color: azure;
-  color:#000915;
+  color: #000915;
 }
 
 .logo {
-  
   width: auto;
   height: 50px;
 }
-.logoTitle{
+.logoTitle {
   text-align: left;
   color: azure;
-  
 }
 .card {
   height: 250px;
   width: 250px;
 }
-.navbarColor{
+.navbarColor {
   background-color: #000915;
 }
 
-
-
+.log-out {
+  font-weight: bold;
+}
