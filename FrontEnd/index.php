@@ -35,11 +35,14 @@ session_start();
         </div>
         <?php
 
+        //<button class="btn btn-primary" onclick="confirmLogout()">Logout</button>
+
         if (isset($_SESSION['userName'])) {
             echo '<div class="justify-content-end">
                         <div class="d-flex align-items-center">
-                            <p class="mb-0 me-3 text-white log-out "> Welcome: ' . $_SESSION['userName'] . '</p>
-                            <button class="btn btn-primary" onclick="confirmLogout()">Logout</button>
+                            <p class="mb-0 me-3 text-white log-out "> ' . $_SESSION['userName'] . '</p>
+                            <a href="userPanel.php"><button class="btn btn-primary rounded-pill h2"><i class="bi bi-person-circle"></i></button></a>
+                            
                         </div>
                       </div>';
         } else {
