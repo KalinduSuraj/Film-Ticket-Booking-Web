@@ -24,8 +24,10 @@
 
 </html>
 <?php
-require_once '../Film-Ticket-Booking-Web/BackEnd/User.php';
-$email = $_POST['email'];
-$user = new User();
-$user->resetPassword($email);
+require_once "../BackEnd/Mail.php";
+if (isset($_POST['email'])) {
+    $email = $_POST['email'];
+    $mail = new Mail();
+    $mail->sendMail($email);
+}
 ?>
