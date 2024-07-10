@@ -1,201 +1,214 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin login</title>
+	<title>Seat Booking</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+	<script src=" 	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"> </script>
 
-	 <!--Boostrap CDN-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <script src=" 	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" > </script>
-    <link rel="stylesheet" href="../FooterStyle.css">
-    <style type="text/css">
-			    	
-		.bg {
-		  position:absolute;
-		  z-index:-1;
-		  top:0;
-		  right:0;
-		  bottom:0;
-		  left:0;
-		  background: linear-gradient(100deg, #000915, #003465);
-        }
-        .form-signin {
-            width: 75%;
-            height: 75%;
-            margin: auto;
-            border-radius: 3px;
-        }
+	<style type="text/css">
+		body {
+			background: linear-gradient(100deg, #000915, #003465);
+			color: white;
+		}
 
-        .container{
-            background-color: #fdfeff47;
-            -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
-            height: 80%;
-            width: 80%;
-            border-radius: 20px;
-        }
-
-        h1 {
-            margin-top: 0px;
-            border-top-left-radius: 3px;
-            border-top-right-radius: 3px;
-            color:#fff;
-            padding:15px;
-            text-align:center;
-        }
-        form {
-        padding:15px;
-        }
-        .btn {
-            color:#fff;				      
-        }
-        
-        .form-control:focus {
-            border-color:#ced4da;
-            box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
-        }
-        .all-seat{
-            margin:3px;
-        }
-        .item {
-            font-size: 12px;
-            position: relative;
-        }
-        .item::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: -12px;
-            transform: translate(0, -50%);
-            width: 10px;
-            height: 10px;
-            background: rgb(255, 255, 255);
-            outline: 0.2mm solid rgb(120, 120, 120);
-            border-radius: 0.3mm;
-        }
-        .item:nth-child(2)::before {
-            background: rgb(180, 180, 180);
-            outline: none;
-        }
-        .item:nth-child(3)::before {
-            background: rgb(28, 185, 120);
-            outline: none;
-        }
-        .status {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-        }
-    </style>
-
+		.container1 {
+			background-color: #fdfeff47;
+			-webkit-backdrop-filter: blur(5px);
+			backdrop-filter: blur(5px);
+			height: 80%;
+			width: 80%;
+			border-radius: 20px;
+		}
+	</style>
 </head>
-<body class="d-flex">
-	<section >
-		<div class="bg d-flex justify-content-center mb-3">
-			<div class="row d-flex">
-				<div class="d-flex justify-content-center  mb-3">
-					 <main class="form-signin ">
-						<div class="container">							
-							<h1>Movie Name</h1><br>
-							<div class="status ">
-                                <div class="item">Available</div>
-                                <div class="item">Booked</div>
-                                <div class="item">Selected</div>
-                            </div>
-							<form action="#" method="post">				
-                            <div class="all-seats">
-                            <input style="margin-left:10px" type="checkbox" name="tickets" id="s1" />
-                            <label for="s1" class="seat booked"></label>
-                            </div>
-                            <div class="mt-5">
-                                <button class="w-100 btn btn-lg" type="submit">Book</button>
 
-                            </div>
-					
-					    </form>
-					     	
-						</div>	
-						
-					</main>
-				</div> 
-			
+<body onload="seatArray()">
+	<div class="container ">
+		<div class="row">
+			<div class="col d-flex justify-content-center mb-3 ">
+				<h1>Select your watching place</h1>
 			</div>
 		</div>
-		
-	</section>
-    <!-- <footer class="footer container-fluid justify-content-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-4">
-                <h5>About Us</h5>
-                <p>
-                    Ut congue augue non tellus bibendum, in varius tellus condimentum.
-                    In scelerisque nibh tortor, sed rhoncus odio condimentum in.
-                    Sed sed est ut sapien ultrices eleifend. Integer tellus est, vehicula eu lectus tincidunt,
-                    ultricies feugiat leo.
-                    Suspendisse tellus elit, pharetra in hendrerit ut, aliquam quis augue.
-                    Nam ut nibh mollis, tristique ante sed, viverra massa.
+		<div class="row">
+			<div class="col">
+				<!-- --------------------
+						select date and month
+					-------------------- !-->
+				<div class="row">
+					<div class="col">
+						<table>
+							<tr>
+								<td>Select Date</td>
+								<td>
+									<select id="month">
+										<option value="January">January</option>
+										<option value="February">February</option>
+										<option value="March">March</option>
+										<option value="April">April</option>
+										<option value="May">May</option>
+										<option value="June">June</option>
+										<option value="July">July</option>
+										<option value="August">August</option>
+										<option value="September">September</option>
+										<option value="October">October</option>
+										<option value="November">November</option>
+										<option value="December">December</option>
 
 
-                </p><br>
-                <div class="d-flex ">
-                    <a href="#">
-                        <h5><i class="bi bi-twitter text-light me-3"></h5></i>
-                    </a>
-                    <a href="#">
-                        <h5><i class="bi bi-facebook text-light me-3"></h5></i>
-                    </a>
-                    <a href="#">
-                        <h5><i class="bi bi-instagram text-light me-3"></h5></i>
-                    </a>
-                    <a href="#">
-                        <h5><i class="bi bi-whatsapp text-light me-3"></h5></i>
-                    </a>
-                </div>
 
-            </div>
-            <div class="col-5 FooterDetails">
-                <br><br>
-                <div>
-                    <p> <small>Street name and number</small> City, Country</p>
-                </div>
-                <div>
-                    <p> (+00) 0000 000 000</p>
-                </div>
-                <div>
-                    <p><a href="#"> office@company.com</a></p>
-                </div>
-            </div>
-            <div class="col-3 content-end">
-                <img class="Footerlogo center" src="src/Logo.png" alt="">
-                <h1 class="FooterlogoTitle">MovieLK</h1>
-            </div>
+									</select>
+								</td>
+								<td>
+									<select id="date">
+										<option value="1">Day 1</option>
+										<option value="2">Day 2</option>
+										<option value="3">Day 3</option>
+										<option value="4">Day 4</option>
+										<option value="5">Day 5</option>
+										<option value="6">Day 6</option>
+										<option value="7">Day 7</option>
+										<br>
+										<option value="8">Day 8</option>
+										<option value="9">Day 9</option>
+										<option value="10">Day 10</option>
+										<option value="11">Day 11</option>
+										<option value="12">Day 12</option>
+										<option value="13">Day 13</option>
+										<option value="14">Day 14</option>
+										<br>
+										<option value="15">Day 15</option>
+										<option value="16">Day 16</option>
+										<option value="17">Day 17</option>
+										<option value="18">Day 18</option>
+										<option value="19">Day 19</option>
+										<option value="20">Day 20</option>
+										<option value="21">Day 21</option>
+										<br>
+										<option value="22">Day 22</option>
+										<option value="23">Day 23</option>
+										<option value="24">Day 24</option>
+										<option value="25">Day 25</option>
+										<option value="26">Day 26</option>
+										<option value="27">Day 27</option>
+										<option value="28">Day 28</option>
+										<br>
+										<option value="29">Day 29</option>
+										<option value="30">Day 30</option>
+									</select>
 
-        </div>
-    </div>
-    <div class="CopyRightDiv">
-        <p class="CopyRight"> MovieLK &copy; 2024</p>
-    </div>
-</footer> -->
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<br><br>
 
-<script>
-    let seats = document.querySelector(".all-seats");
-      for (var i = 0; i < 109; i++) {
-        let randint = Math.floor(Math.random() * 2);
-        let booked = randint === 1 ? "booked" : "";
-        seats.insertAdjacentHTML(
-          "beforeend",
-          '<input style="margin:10px" type="checkbox" name="tickets" id="s' +
-            (i + 2) +
-            '" /><label for="s' +
-            (i + 2) +
-            '" class="seat ' +
-            booked +
-            '"></label>'
-        );
-      }
-</script>
+				<div class="row">
+					<!-- ------------------ 
+						booking array 
+					-------------------	!-->
+					<div class="col-6">
+						<table id="seat">
+
+						</table>
+					</div>
+					<!-- ------------------ 
+						booking array 
+					-------------------	!-->
+					<div class="col-6">
+						<form>
+							<table class="table" id="bookingTable">
+								<thead>
+									<tr>
+										<th scope="col">Film Name</th>
+										<th scope="col">Shedule ID</th>
+										<th scope="col">Viwer ID</th>
+										<th scope="col">Date</th>
+										<th scope="col">Seat No</th>
+										<th scope="col">Remove</th>
+									</tr>
+								</thead>
+							</table>
+							<input type="submit">
+						</form>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function seatArray() {
+			var table = document.getElementById("seat");
+			var date = document.getElementById("date").value;
+
+
+			for (var i = 0; i < 10; i++) {
+				var row = table.insertRow(i);
+				for (let j = 65; j <= 75; j++) {
+					var x = 0;
+					var cell1 = row.insertCell(x);
+					var sId = String.fromCharCode(j) + i;
+					cell1.innerHTML = '<input id=' + sId + ' class="rounded" style="background-color: green;border:none;padding:5px;margin:5px;padding-left:5px;color: white;" type="button" name="sId" value=' + sId + ' onclick="setSeat(this.value)">';
+
+
+				}
+			}
+		}
+
+		function setSeat(sId) {
+
+			var seatId = sId.toString();
+
+			alert(seatId);
+			//fName,shId,vId,
+			document.getElementById(sId).style.backgroundColor = "red";
+			var date = document.getElementById("date").value;
+			var month = document.getElementById("month").value;
+
+			var table2 = document.getElementById("bookingTable");
+
+			var row = table2.insertRow(1);
+			var cell1 = row.insertCell(0);
+			var cell2 = row.insertCell(1);
+			var cell3 = row.insertCell(2);
+			var cell4 = row.insertCell(3);
+			var cell5 = row.insertCell(4);
+			var cell6 = row.insertCell(5);
+
+			cell1.innerHTML = "Film name";
+			cell2.innerHTML = "S001";
+			cell3.innerHTML = "V001";
+			cell4.innerHTML = month + "/" + date;
+			cell5.innerHTML = seatId;
+			cell6.innerHTML = '<input class="rounded" style="background-color: red;color: white;" type="button" name="Remove" value="Remove" onclick="deleteRow(' + seatId + ')">';
+
+		}
+
+		function deleteRow(cn) {
+			var table = document.getElementById("bookingTable");
+			var rows = table.getElementsByTagName("tr");
+
+			for (let i = 1; i < rows.length; i++) {
+				var cells = rows[i].getElementsByTagName("td");
+				var seatNo = cells[4].textContent;
+
+				if (seatNo.toString() === cn.toString()) {
+					table.deleteRow(i);
+					break;
+				} else {
+					alert(cn);
+				}
+			}
+
+		}
+	</script>
+
 </body>
-</html>
+
+</html
