@@ -12,17 +12,17 @@
 </head>
 
 <body style="background-color:#34315e">
-	<div class="container">
+	<div class="container"><br><br>
 		<div class="row">
-
-			<table class="table table-dark" id="tblFilms">
+		
+			<table class="table table-dark pt-5" id="tblFilms">
 				<thead>
 					<tr>
 						<th scope="col">Film ID</th>
 						<th scope="col">Name</th>
 						<th scope="col">Language</th>
 						<th scope="col">Year</th>
-						<th scope="col">Remove</th>
+						<th scope="col">Edit / Remove</th>
 					</tr>
 					<?php
 					require_once "../BackEnd/Movie.php";
@@ -36,9 +36,7 @@
 			</table>
 		</div>
 
-		<div id="edit-table">
-
-		</div>
+		
 	</div>
 
 	<!-- --------------------
