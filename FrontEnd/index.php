@@ -35,7 +35,7 @@ session_start();
         </div>
         <?php
 
-        //<button class="btn btn-primary" onclick="confirmLogout()">Logout</button>
+        
 
         if (isset($_SESSION['userName'])) {
             echo '<div class="justify-content-end">
@@ -68,15 +68,7 @@ session_start();
             ?>
         </div>
     </div>
-    <script>
-        function confirmLogout() {
-            if (confirm('Are you sure you want to log out?')) {
-                window.location.href = 'logOut.php';
-            } else {
-                window.location.href = 'index.php';
-            }
-        }
-    </script>
+    
 </body>
 <!-- footer -->
 <footer class="footer container-fluid">

@@ -86,7 +86,7 @@
 					<p class="p1">Admin Dashboard</p>
 				</div>
 				<div class="col d-flex justify-content-end">
-					<p class="p1"><a href="index.php">MovieLK</a> </p><img src="src/Logo.png" style="height:50px;width:50px; text-decoration:none">
+					<p class="p1"><a href="index.php" class="navbar-brand">MovieLK</a> </p><img src="src/Logo.png" style="height:50px;width:50px; text-decoration:none">
 				</div>
 			</div>
 		</div>
@@ -97,8 +97,8 @@
 			<div class="container d-flex">
 				<div id="mySidenav" class="sidebar ">
 					<a href="javascript:void(0)" class="closebtn a2" onclick="closeNav()">&#9776;</a>
+					<a class="a1" id="removeFilms" href="#" onclick="toggleViewFilm()">View films</a>
 					<a class="a1" id="addFilms" href="#" onclick="toggleAddFilm()">Add films</a>
-					<a class="a1" id="removeFilms" href="#" onclick="toggleRemoveFilm()">Remove films</a>
 					<a class="a1" id="removeFilms" href="#" onclick="toggleAddSchedule()">Add Schedule</a>
 					<a class="a1" id="removeFilms" href="#" onclick="toggleRemoveSchedule()">Remove Schedule</a>
 
@@ -110,7 +110,7 @@
  		form load
 ------------------------------------------ !-->
 		<div class="col ">
-			<iframe src="addfilm.php" id="main" style=" margin-Left:200px;margin-top:0px; width: 85%; height: 500px;">
+			<iframe src="viewFilm.php" id="main" style=" margin-Left:200px;margin-top:0px; width: 85%; height: 500px;">
 			</iframe>
 		</div>
 
@@ -134,8 +134,10 @@
 
 		}
 
-		function toggleRemoveFilm() {
-			document.getElementById("main").src = "removeFilm.php";
+		
+
+		function toggleViewFilm() {
+			document.getElementById("main").src = "viewFilm.php";
 
 		}
 
