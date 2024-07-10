@@ -44,6 +44,10 @@ class Viewer extends User
                     echo "<script> console.log('Added'); </script>";
                     echo "<script>alert('User Registered Successfully');</script>";
                     echo "<script>window.location.href = 'signIn.php';</script>";
+
+                    User::logIn($userName, $password);
+                    echo "<script>window.href='signIn.php';</script>";
+                    //header("Location: index.php");
                 } else {
                     echo "<script> console.log('not Added'); </>";
                 }
