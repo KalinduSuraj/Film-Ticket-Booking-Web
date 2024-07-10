@@ -109,13 +109,13 @@ session_start();
               <!-- userName input -->
               <div data-mdb-input-init class="form-outline  userName m-4">
                 <img src="src/User.png" alt="user" class="input-imgs">
-                <input type="text" name="userName" class="form-control form-control-lg" placeholder="UserName" />
+                <input type="text" name="userName" class="form-control form-control-lg" id="username" placeholder="UserName" />
               </div>
 
               <!-- Password input -->
               <div data-mdb-input-init class="form-outline mb-4 password mx-4">
                 <img src="src/Padlock.png" alt="pw" class="input-imgs">
-                <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" />
+                <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Password" />
               </div>
 
               <div class="d-flex justify-content-around align-items-center mb-4 mx-4">
@@ -129,7 +129,7 @@ session_start();
 
                 <div class="forget-create mx-4">
                   <div class="col " id="other">
-                    <div class="row"><a href="#!" class="forget-pass">Forgot password?</a></div>
+                    <div class="row"><a href="../FrontEnd/forgotPassword.php" class="forget-pass">Forgot password?</a></div>
                     <div class="row"> <label>No Account?<a href="signUp.php" class="create"> Create</a></label> </div>
                   </div>
                 </div>

@@ -8,6 +8,7 @@ class DBConnection
     {
         $this->connection = mysqli_connect("localhost", "chanuka", "Chanuka@20021004", "movie_ticket_booking");
 
+
         //freesqldatabase.com
         //$this->connection = mysqli_connect("sql12.freesqldatabase.com", "sql12718492", "DwnP2Mt8rg", "sql12718492");
         if (!$this->connection) {

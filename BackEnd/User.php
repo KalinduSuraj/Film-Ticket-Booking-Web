@@ -1,7 +1,10 @@
 <?php
+
+
+
 require_once "../BackEnd/Viewer.php";
 require_once "../BackEnd/Admin.php";
-require_once "../BackEnd/DBConnection.php";
+
 class User
 {
     private $db;
@@ -52,17 +55,24 @@ class User
             $this->db->disconnect();
         }
     }
-
-    // public function resetPassword($email){
-    //     $token = bin2hex(random_bytes(16));
-    //     $tokenHash = hash("sha256",$token);
-
-    //     $expiry = date("Y-m-d H:i:s",time()+ 60+30);
-    //     $sql = "Update user Set reset_token_hash ='$tokenHash' ,
-    //             reset_token_expire_at ='$expiry' where Email = '$email'";
-
-    //     $result = mysqli_query($this->db->getConnection(), $sql);  
-    //     echo "<script type='text/javascript'>window.location.href = '../FrontEnd/forgotPassword/send-password-reset.php';</script>";
-    // }
-
+    function resetPassword($password, $token)
+    {
+        echo $token . "<br>";
+        $tokenHash = hash("sha256", $token);
+        echo $tokenHash;
+        $sql = "SELECT * from user WHERE reset_token_hash = '$tokenHash'";
+        $res = mysqli_query($this->db->getConnection(), $sql);
+        $row = mysqli_num_rows($res);
+        if ($row == 0) {
+            echo "Token not found";
+        } else {
+            $queary = "UPDATE user SET Password='$password',reset_token_hash = NULL,reset_token_expire_at = NULL WHERE reset_token_hash = '$tokenHash'";
+            $result = mysqli_query($this->db->getConnection(), $queary);
+            if ($result === true) {
+                echo "<script>alert('Password updated Successfully');
+                        window.location.href = '../FrontEnd/signIn.php';       
+                </script>";
+            }
+        }
+    }
 }

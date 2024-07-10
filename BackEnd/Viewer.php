@@ -32,7 +32,7 @@ class Viewer extends User
             $res = mysqli_query($this->db->getConnection(), $q2);
             if (!(mysqli_num_rows($res) == 1)) {
                 //inner join
-                $queary2 = "insert into viewer(User_Id,Name,Contact_No)
+                $queary2 = "insert into viewer(User_Id,Name,contact_No)
                 values('$userId','$name','$contactNo');";
                 $queary1 = "insert into user(Email,Password,UserName,User_Id)
                 values('$email','$password','$userName','$userId');";
@@ -42,9 +42,10 @@ class Viewer extends User
 
                 if ($result1 && $result2) {
                     echo "<script> console.log('Added'); </script>";
-                    header("Location: signIn.php");
+                    echo "<script>alert('User Registered Successfully');</script>";
+                    echo "<script>window.location.href = 'signIn.php';</script>";
                 } else {
-                    echo "<script> console.log('not Added'); </script>";
+                    echo "<script> console.log('not Added'); </>";
                 }
                 return true;
             } else {
