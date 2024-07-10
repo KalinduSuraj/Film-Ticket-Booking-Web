@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,19 +8,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style type="text/css">
-        .whset{
+        .whset {
             width: 200px;
             margin-top: 2px;
             margin-bottom: 2px;
             margin-left: 5px;
         }
 
-        body{
+        body {
             background: linear-gradient(100deg, #000915, #003465);
             color: white;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <form method="post" action="addfilm.php" enctype="multipart/form-data">
@@ -76,14 +78,15 @@
         </form>
     </div>
 </body>
+
 </html>
 
 <?php
 require_once "../BackEnd/Movie.php";
 require_once "../BackEnd/DBConnection.php";
 
-if(isset($_POST['btnSubmit'])){
-    if(!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['year']) && !empty($_POST['language']) && !empty($_POST['price']) &&!empty($_POST['genre']) &&  !empty($_FILES['poster']['name']) && !empty($_FILES['banner']['name'])){
+if (isset($_POST['btnSubmit'])) {
+    if (!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['year']) && !empty($_POST['language']) && !empty($_POST['price']) && !empty($_POST['genre']) &&  !empty($_FILES['poster']['name']) && !empty($_FILES['banner']['name'])) {
 
         $name = $_POST["name"];
         $description = $_POST["description"];
@@ -97,7 +100,7 @@ if(isset($_POST['btnSubmit'])){
         $bannerTemp = $_FILES["banner"]["tmp_name"];
 
         $movie = new Movie();
-        $result = $movie->AddMovie($name, $year, $description, $language, $price,$genre, $posterImg, $posterTemp, $bannerImg, $bannerTemp);
+        $result = $movie->AddMovie($name, $year, $description, $language, $price, $genre, $posterImg, $posterTemp, $bannerImg, $bannerTemp);
 
         if ($result) {
             echo "<script> alert('Movie added successfully'); </script>";

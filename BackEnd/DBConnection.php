@@ -1,9 +1,11 @@
 <?php
-class DBConnection {
+class DBConnection
+{
     //*------------------------------------------------|DONE|----------------------------------------------
     private $connection;
 
-    public function connect(){
+    public function connect()
+    {
         $this->connection = mysqli_connect("localhost", "chanuka", "Chanuka@20021004", "movie_ticket_booking");
 
         //freesqldatabase.com
@@ -11,9 +13,9 @@ class DBConnection {
         if (!$this->connection) {
             echo "Connection failed: " . mysqli_connect_error();
         }
-        
     }
-    public function disconnect(){
+    public function disconnect()
+    {
         if ($this->connection) {
             mysqli_close($this->connection);
             $this->connection = null; // Unset the connection object
@@ -21,8 +23,8 @@ class DBConnection {
     }
 
     // Method to get the connection object
-    public function getConnection(){
+    public function getConnection()
+    {
         return $this->connection;
     }
 }
-?>

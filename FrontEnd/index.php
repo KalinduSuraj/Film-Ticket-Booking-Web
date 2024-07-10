@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,22 +33,21 @@
         <div>
             <h1 class="logoTitle ">MovieLK</h1>
         </div>
-        <?php 
-         
-            if (isset($_SESSION['userName'])) {
-                echo '<div class="justify-content-end">
+        <?php
+
+        if (isset($_SESSION['userName'])) {
+            echo '<div class="justify-content-end">
                         <div class="d-flex align-items-center">
-                            <p class="mb-0 me-3 text-white log-out "> Welcome: '.$_SESSION['userName'].'</p>
+                            <p class="mb-0 me-3 text-white log-out "> Welcome: ' . $_SESSION['userName'] . '</p>
                             <button class="btn btn-primary" onclick="confirmLogout()">Logout</button>
                         </div>
                       </div>';
-                
-            } else {
-                echo '<div class="justify-content-end">
+        } else {
+            echo '<div class="justify-content-end">
                         <a href="signIn.php"><button class="btn btn-primary">LogIn</button></a>
                         <a href="signUp.php"><button class="btn btn-primary">SignUp</button></a>
                       </div>';
-            }
+        }
         ?>
 
     </nav>
@@ -59,10 +58,10 @@
         <div class="container">
             <h4 class="movie-heading">Movies</h4>
             <?php
-                require_once "../BackEnd/Movie.php";
-                require_once "../BackEnd/DBConnection.php";
-                $obj = new Movie();
-               echo $obj->ViewMovieForIndex();
+            require_once "../BackEnd/Movie.php";
+            require_once "../BackEnd/DBConnection.php";
+            $obj = new Movie();
+            echo $obj->ViewMovieForIndex();
             ?>
         </div>
     </div>

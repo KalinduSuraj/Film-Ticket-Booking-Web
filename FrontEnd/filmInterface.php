@@ -2,13 +2,14 @@
 <html lang="en">
 
 <?php
-  require_once '../BackEnd/Movie.php';
-  require_once '../BackEnd/DBConnection.php';
+require_once '../BackEnd/Movie.php';
+require_once '../BackEnd/DBConnection.php';
 
-  $obj = new Movie();
-  $F_Id = $_GET['F_Id'];
-  $filmData = $obj->ViewMovieForFilmInterface($F_Id);
+$obj = new Movie();
+$F_Id = $_GET['F_Id'];
+$filmData = $obj->ViewMovieForFilmInterface($F_Id);
 ?>
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,7 +42,7 @@
     .movie-details img {
       margin-top: 400px;
       width: 200px;
-      border:4px solid white;
+      border: 4px solid white;
     }
 
     .movie-info {
@@ -53,6 +54,7 @@
       margin-bottom: -30px;
 
     }
+
     .name-date {
       position: absolute;
       text-align: end;
@@ -98,17 +100,17 @@
   <div class="container-fluid p-0">
     <div id="MovieBanner" class="movie-banner">
       <div class="movie-details">
-      <img id="MoviePoster" src="../FrontEnd/posterImg/<?php echo $filmData['poster']; ?>" alt="Movie Poster" class="movie-poster rounded" />
+        <img id="MoviePoster" src="../FrontEnd/posterImg/<?php echo $filmData['poster']; ?>" alt="Movie Poster" class="movie-poster rounded" />
       </div>
     </div>
 
     <div class="name-date container-fluid">
-    <h4 id="MovieName" class="MovieName">
-      <?php echo $filmData['Name']; ?>
+      <h4 id="MovieName" class="MovieName">
+        <?php echo $filmData['Name']; ?>
         <label id="Date" class="DateLabel badge-warning">
           <?php echo $filmData['Relese_Year']; ?>
         </label>
-    </h4>
+      </h4>
 
       <a href="BookingPage.php"><button class="btnBooking btn-primary">Book Tickets</button></a>
     </div>
@@ -127,9 +129,8 @@
       <div class="col-md-4">
         <div class="movie-info ">
           <h4>Genres</h4>
-          <p>Genres from DB</p>
           <p>
-            <span class="badge badge-warning" id=""><?php echo  $filmData['Genre'];?></span>
+            <span class="badge badge-warning" id=""><?php echo  $filmData['Genre']; ?></span>
           </p>
           <h4>Language </h4>
           <p id="Language">
@@ -153,7 +154,7 @@
             Suspendisse tellus elit, pharetra in hendrerit ut, aliquam quis augue.
             Nam ut nibh mollis, tristique ante sed, viverra massa.
           </p>
-  
+
         </div>
         <div class="col-5 FooterDetails">
           <br><br>
@@ -171,7 +172,7 @@
           <img class="Footerlogo center" src="src/Logo.png" alt="">
           <h1 class="FooterlogoTitle">MovieLK</h1>
         </div>
-  
+
       </div>
     </div>
     <div class="CopyRightDiv">

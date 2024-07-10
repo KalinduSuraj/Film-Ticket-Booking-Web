@@ -1,8 +1,11 @@
 <?php
-    class Booking{
+class Booking
+{
 
-        public function SetBooking(){}
-        public function CancelBooking(){}
-        
+    public function SetBooking()
+    {
     }
-?>
+    public function CancelBooking()
+    {
+    }
+}
