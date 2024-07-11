@@ -22,7 +22,7 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
 		}
 
 		.backimage {
-			background: linear-gradient(100deg, #000915, #003465);
+			background-color: #34315E;
 		}
 
 		.sidebar {
@@ -119,7 +119,7 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
  		form load
 ------------------------------------------ !-->
 		<div class="col ">
-			<iframe src="viewFilm.php" id="main" style=" margin-Left:200px;margin-top:0px; width: 85%; height: 500px;">
+			<iframe src="viewFilm.php" id="main" style=" margin-Left:200px;margin-top:0px; width: 85%; height: 580px;">
 			</iframe>
 		</div>
 
@@ -151,7 +151,7 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
 		}
 
 		function toggleAddSchedule() {
-			document.getElementById("main").src = "removeFilm.php";
+			document.getElementById("main").src = "addSchedule.php";
 
 		}
 

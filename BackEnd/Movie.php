@@ -218,4 +218,22 @@ class Movie
             $this->db->disconnect();
         }
     }
+
+    public function VIewForAddSchedule()
+    {
+        try {
+            $queary = "Select F_Id from film ";
+            $result = mysqli_query($this->db->getConnection(), $queary);
+            $output = ""; // Initialize $output as an empty string
+            while ($row = mysqli_fetch_assoc($result)) {
+                $output .= "<option value='" . $row['F_Id'] . "'>" . $row['F_Id'] . "</option>";
+            }
+            return $output;
+        } catch (Exception $e) {
+            echo "<script> console.log('Error: " . $e->getMessage() . "'); </>";
+            return null;
+        } finally {
+            $this->db->disconnect();
+        }
+    }
 }
