@@ -30,7 +30,7 @@ class User
                 $userType = substr($userId, 0, 1);
                 session_start();
                 $_SESSION['userName'] = $userName;
-                $_SESSION['userName'];
+                $_SESSION['userType']= $userType;
                 if ($userType == "V") {
                     echo "<script type='text/javascript'>window.location.href = '../FrontEnd/index.php';</script>";
 

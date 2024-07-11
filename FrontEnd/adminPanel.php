@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
+	header("Location: index.php");
+	exit();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -134,7 +142,7 @@
 
 		}
 
-		
+
 
 		function toggleViewFilm() {
 			document.getElementById("main").src = "viewFilm.php";

@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
+    header("Location: index.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +33,7 @@
     <div class="container">
         <form method="post" action="editMovie.php" enctype="multipart/form-data">
             <table>
-            
+
                 <tr>
                     <td>Film ID: </td>
                     <td><input class="whset" type="text" name="filmId" id="filmId"></td>
@@ -82,7 +89,7 @@
             </table>
         </form>
     </div>
-    
+
 </body>
 
 </html>
@@ -94,7 +101,7 @@ require_once "../BackEnd/DBConnection.php";
 if (isset($_POST['btnSubmit'])) {
     if (!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['year']) && !empty($_POST['language']) && !empty($_POST['price']) && !empty($_POST['genre']) &&  !empty($_FILES['poster']['name']) && !empty($_FILES['banner']['name'])) {
 
-        $filmId=$_POST["filmId"];
+        $filmId = $_POST["filmId"];
         $name = $_POST["name"];
         $description = $_POST["description"];
         $year = $_POST["year"];
@@ -107,7 +114,7 @@ if (isset($_POST['btnSubmit'])) {
         $bannerTemp = $_FILES["banner"]["tmp_name"];
 
         $movie = new Movie();
-        $result = $movie->EditMovie($filmId,$name, $year, $description, $language, $price, $genre, $posterImg, $posterTemp, $bannerImg, $bannerTemp);
+        $result = $movie->EditMovie($filmId, $name, $year, $description, $language, $price, $genre, $posterImg, $posterTemp, $bannerImg, $bannerTemp);
 
         if ($result) {
             echo "<script> alert('Movie added successfully'); </script>";
