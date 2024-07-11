@@ -30,7 +30,7 @@ class User
                 $userType = substr($userId, 0, 1);
                 session_start();
                 $_SESSION['userName'] = $userName;
-                $_SESSION['userType']= $userType;
+                $_SESSION['userType'] = $userType;
                 if ($userType == "V") {
                     echo "<script type='text/javascript'>window.location.href = '../FrontEnd/index.php';</script>";
 
@@ -43,7 +43,7 @@ class User
                 return true;
             } else {
 
-                echo "<script> console.log('Invalid username or password'); </script>";
+                echo "<script> alert('Invalid username or password'); </script>";
                 return false;
             }
         } catch (Exception $e) {
