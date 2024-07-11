@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
+    header("Location: index.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -77,7 +84,7 @@
             </table>
         </form>
     </div>
-    
+
 </body>
 
 </html>

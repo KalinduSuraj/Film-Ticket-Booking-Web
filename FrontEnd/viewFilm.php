@@ -14,7 +14,7 @@
 <body style="background-color:#34315e">
 	<div class="container"><br><br>
 		<div class="row">
-		
+
 			<table class="table table-dark pt-5" id="tblFilms">
 				<thead>
 					<tr>
@@ -29,25 +29,30 @@
 					require_once "../BackEnd/DBConnection.php";
 
 					$obj = new Movie();
-					echo $obj->ViewMovieForRemovePage();
+					echo $obj->ViewMovieForRemoveEditPage();
 					?>
 				</thead>
 
 			</table>
 		</div>
 
-		
+
 	</div>
 
 	<!-- --------------------
 	java Script
 -------------------- !-->
 	<script>
-		// JavaScript functions for edit and remove
+		// remove movies
 		function removeMovie(filmId) {
 			if (confirm("Are you sure you want to remove this movie?")) {
-				window.location.href = "../BackEnd/path_to_php_file.php?F_Id=" + encodeURIComponent(filmId);
+				window.location.href = "../BackEnd/handleRemoveMovie.php?F_Id=" + encodeURIComponent(filmId);
 			}
+
+		}
+		//edit movies
+		function editMovie(filmId) {
+			header("Location: editMovie.php?");
 
 		}
 	</script>

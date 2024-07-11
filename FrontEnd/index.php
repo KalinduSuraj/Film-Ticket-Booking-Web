@@ -38,13 +38,24 @@ session_start();
         
 
         if (isset($_SESSION['userName'])) {
-            echo '<div class="justify-content-end">
-                        <div class="d-flex align-items-center">
-                            <p class="mb-0 me-3 text-white log-out "> ' . $_SESSION['userName'] . '</p>
-                            <a href="userPanel.php"><button class="btn btn-primary rounded-pill h2"><i class="bi bi-person-circle"></i></button></a>
-                            
-                        </div>
-                      </div>';
+            if ((isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
+                echo '<div class="justify-content-end">
+                            <div class="d-flex align-items-center">
+                                <p class="mb-0 me-3 text-white log-out "> ' . $_SESSION['userName'] . '</p>
+                                <a href="adminPanel.php"><button class="btn btn-primary rounded-pill h2"><i class="bi bi-person-circle"></i></button></a>
+                                
+                            </div>
+                          </div>';
+            }
+            else{
+                echo '<div class="justify-content-end">
+                            <div class="d-flex align-items-center">
+                                <p class="mb-0 me-3 text-white log-out "> ' . $_SESSION['userName'] . '</p>
+                                <a href="userPanel.php"><button class="btn btn-primary rounded-pill h2"><i class="bi bi-person-circle"></i></button></a>
+                                
+                            </div>
+                          </div>';
+            }
         } else {
             echo '<div class="justify-content-end">
                         <a href="signIn.php"><button class="btn btn-primary">LogIn</button></a>

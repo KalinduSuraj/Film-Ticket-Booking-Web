@@ -112,35 +112,35 @@
         </div>
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
           <div class="bg">
-            <form method="post" action="#">
+            <form method="post" action="#" id="signUp-Form">
               <h1 class="text-center">Sign Up</h1>
               <!-- email input -->
               <div data-mdb-input-init class="form-outline m-4 email">
                 <img src="src/Email.png" alt="user" class="emailImg">
-                <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" />
+                <input id="email" type="email" name="email" class="form-control form-control-lg" placeholder="Email" />
               </div>
 
               <!-- name input -->
               <div data-mdb-input-init class="form-outline m-4 name">
                 <img src="src/Id-card.png" alt="user" class="nameImg">
-                <input type="text" name="name" class="form-control form-control-lg" placeholder="Name" />
+                <input id="name" type="text" name="name" class="form-control form-control-lg" placeholder="Name" />
               </div>
 
               <!-- userName input -->
               <div data-mdb-input-init class="form-outline m-4 userName">
                 <img src="src/User.png" alt="user" class="userImg">
-                <input type="text" name="userName" class="form-control form-control-lg" placeholder="UserName" />
+                <input id="userName" type="text" name="userName" class="form-control form-control-lg" placeholder="UserName" />
               </div>
 
               <!-- Password input -->
               <div data-mdb-input-init class="form-outline m-4 password">
                 <img src="src/Padlock.png" alt="pw" class="pwImg">
-                <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" />
+                <input id="password" type="password" name="password" class="form-control form-control-lg" placeholder="Password" />
               </div>
               <!-- ContactNo input -->
               <div data-mdb-input-init class="form-outline m-4 password">
                 <img src="src/Padlock.png" alt="pw" class="pwImg">
-                <input type="telephone" name="contactNo" class="form-control form-control-lg" placeholder="Contact No" />
+                <input id="contactNo" type="tel" name="contactNo" class="form-control form-control-lg" placeholder="Contact No" />
               </div>
 
               <div class="d-flex justify-content-around align-items-center m-4">
@@ -150,7 +150,7 @@
                   <label class="form-check-label"> Remember me </label>
                 </div>
                 <div>
-                  <div class="col ">
+                  <div class="col">
                     <div class="row">
                       <label>Have Account?<a href="signIn.php" class="create"> Sign In</a></label>
                     </div>
@@ -162,11 +162,41 @@
                 <button type="submit" class="btn btn-primary btn-lg btn-block btn-signUp m-4" name="signUpBtn">Sign Up</button>
               </div>
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
+            <script>
+              document.getElementById('signUp-Form').addEventListener('submit', function(event) {
+                let email = document.getElementById('email').value;
+                let name = document.getElementById('name').value;
+                let userName = document.getElementById('userName').value;
+                let password = document.getElementById('password').value;
+                let contactNo = document.getElementById('contactNo').value;
+
+                let errorMessages = [];
+
+                if (email === "") {
+                  errorMessages.push('Please enter Email.');
+                }
+                if (name === "") {
+                  errorMessages.push('Please enter Name.');
+                }
+                if (userName === "") {
+                  errorMessages.push('Please enter UserName.');
+                }
+                if (password === "") {
+                  errorMessages.push('Please enter Password.');
+                }
+                if (contactNo === "" || isNaN(contactNo) || contactNo.length !== 10) {
+                  errorMessages.push('Please enter a valid 10-digit Contact No.');
+                }
+
+                if (errorMessages.length > 0) {
+                  event.preventDefault();
+                  alert(errorMessages.join('\n'));
+                }
+              });
+            </script>
+
+
 </body>
 
 </html>

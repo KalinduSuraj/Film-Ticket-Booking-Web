@@ -27,6 +27,10 @@ class Mail
 
         $result = mysqli_query($this->db->getConnection(), $sql);
 
+        if (mysqli_affected_rows($this->db->getConnection()) === 0) {
+            echo "<script>alert('The email address not found. Please check and try again.')</script>";
+            return;
+        }
         if (!$result) {
             die("Error executing query: " . mysqli_error($this->db->getConnection()));
         } else {
@@ -52,10 +56,10 @@ class Mail
                                 END;
             try {
                 $mail->send();
+                echo "<script>alert('Message sent. Please check your inbox')</script>";
             } catch (Exception $e) {
                 echo "message could not be sent. Mailer error: {$mail->ErrorInfo}";
             }
         }
-        echo "Message sent. Please check your inbox";
     }
 }

@@ -49,11 +49,11 @@ class Viewer extends User
                     echo "<script>window.href='signIn.php';</script>";
                     //header("Location: index.php");
                 } else {
-                    echo "<script> console.log('not Added'); </>";
+                    echo "<script> alert('not Added'); </>";
                 }
                 return true;
             } else {
-                echo "<script> console.log('there is the Viewer in this $userName'); </script>";
+                echo "<script> alert('there is the Viewer in this $userName'); </script>";
                 return false;
             }
         } catch (exception $e) {
