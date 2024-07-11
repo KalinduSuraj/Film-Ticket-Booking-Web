@@ -107,8 +107,9 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
 					<a href="javascript:void(0)" class="closebtn a2" onclick="closeNav()">&#9776;</a>
 					<a class="a1" id="removeFilms" href="#" onclick="toggleViewFilm()">View films</a>
 					<a class="a1" id="addFilms" href="#" onclick="toggleAddFilm()">Add films</a>
-					<a class="a1" id="removeFilms" href="#" onclick="toggleAddSchedule()">Add Schedule</a>
-					<a class="a1" id="removeFilms" href="#" onclick="toggleRemoveSchedule()">Remove Schedule</a>
+					<a class="a1" id="addSchedule" href="#" onclick="toggleAddSchedule()">Add Schedule</a>
+					<a class="a1" id="removeSchedule" href="#" onclick="toggleRemoveSchedule()">Remove Schedule</a>
+					<a class="a1" id="logOut" href="#" onclick="confirmLogout()">Log Out</a>
 
 				</div>
 				<span style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776; </span>
@@ -157,6 +158,14 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
 		function toggleRemoveSchedule() {
 			document.getElementById("main").src = "removeFilm.php";
 
+		}
+
+		function confirmLogout() {
+			if (confirm('Are you sure you want to log out?')) {
+				window.location.href = 'logOut.php';
+			} else {
+				window.location.href = 'index.php';
+			}
 		}
 	</script>
 

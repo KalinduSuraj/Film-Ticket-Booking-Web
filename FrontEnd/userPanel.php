@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -97,8 +98,8 @@
 			<div class="container d-flex">
 				<div id="mySidenav" class="sidebar ">
 					<a href="javascript:void(0)" class="closebtn a2" onclick="closeNav()">&#9776;</a>
-					<a class="a1" id="addFilms" href="#" onclick="viewBookings()">Booking</a>
-					<a class="a1" id="removeFilms" href="#" onclick="confirmLogout()">Logout</a>
+					<a class="a1"  href="#" onclick="viewBookings()">Booking</a>
+					<a class="a1"  href="#" onclick="confirmLogout()">Logout</a>
 					
 				</div>
 				<span style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776; </span>
