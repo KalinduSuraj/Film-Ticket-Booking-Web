@@ -30,11 +30,11 @@
                                 <div data-mdb-input-init class="form-outline">
                                     <select class="form-select form-select-sm align-top mt-2" id="selectFilmID" name="selectFilmID">
                                         <option value="0">--Select Film ID--</option>
-                                        <?php /*
+                                        <?php 
                                             require_once "../BackEnd/Movie.php";
                                             require_once "../BackEnd/DBConnection.php";
                                             $obj = new Movie();
-                                            echo $obj->VIewForAddSchedule(); */
+                                            echo $obj->VIewForAddSchedule(); 
                                         ?>
                                     </select>
                                 </div>

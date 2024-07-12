@@ -20,7 +20,7 @@ class User
 
         try {
 
-            $queary = "SELECT User_Id FROM User WHERE UserName='$userName' AND Password='$password'";
+            $queary = "SELECT User_Id FROM user WHERE UserName='$userName' AND Password='$password'";
             $result = mysqli_query($this->db->getConnection(), $queary);
 
             if (mysqli_num_rows($result) == 1) {
