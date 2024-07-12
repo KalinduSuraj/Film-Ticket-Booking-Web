@@ -38,13 +38,7 @@ session_start();
                                             require_once "../BackEnd/Movie.php";
                                             require_once "../BackEnd/DBConnection.php";
                                             $obj = new Movie();
-                                            echo $obj->VIewForAddSchedule(); 
-
-                                        <?php
-                                        require_once "../BackEnd/Movie.php";
-                                        require_once "../BackEnd/DBConnection.php";
-                                        $obj = new Movie();
-                                        echo $obj->VIewForAddSchedule();
+                                            echo $obj->VIewForAddSchedule();
                                         ?>
                                     </select>
                                 </div>
