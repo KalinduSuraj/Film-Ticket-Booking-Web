@@ -20,7 +20,7 @@ class User
 
         try {
 
-            $queary = "SELECT User_Id FROM User WHERE UserName='$userName' AND Password='$password'";
+            $queary = "SELECT User_Id FROM user WHERE UserName='$userName' AND Password='$password'";
             $result = mysqli_query($this->db->getConnection(), $queary);
 
             if (mysqli_num_rows($result) == 1) {
@@ -30,6 +30,7 @@ class User
                 $userType = substr($userId, 0, 1);
                 session_start();
                 $_SESSION['userName'] = $userName;
+                $_SESSION['userId'] = $userId;
                 $_SESSION['userType'] = $userType;
                 if ($userType == "V") {
                     echo "<script type='text/javascript'>window.location.href = '../FrontEnd/index.php';</script>";
