@@ -105,8 +105,8 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
 			<div class="container d-flex">
 				<div id="mySidenav" class="sidebar ">
 					<a href="javascript:void(0)" class="closebtn a2" onclick="closeNav()">&#9776;</a>
-					<a class="a1" id="removeFilms" href="#" onclick="toggleViewFilm()">View films</a>
 					<a class="a1" id="addFilms" href="#" onclick="toggleAddFilm()">Add films</a>
+					<a class="a1" id="removeFilms" href="#" onclick="toggleViewFilm()">View films</a>
 					<a class="a1" id="addSchedule" href="#" onclick="toggleAddSchedule()">Add Schedule</a>
 					<a class="a1" id="logOut" href="#" onclick="confirmLogout()">Log Out</a>
 

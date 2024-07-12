@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +23,7 @@
     <div class=" d-flex justify-content-center p-5">
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
             <div class="bg p-3">
-                <form method="POST" action="addfilm.php" enctype="multipart/form-data">
+                <form method="POST" action="#" enctype="multipart/form-data">
                     <h1 class="text-center mb-3">Add Movie Schedule</h1>
                     <table width="100%">
                         <!-- Select Film ID -->
@@ -30,11 +33,18 @@
                                 <div data-mdb-input-init class="form-outline">
                                     <select class="form-select form-select-sm align-top mt-2" id="selectFilmID" name="selectFilmID">
                                         <option value="0">--Select Film ID--</option>
+
                                         <?php 
                                             require_once "../BackEnd/Movie.php";
                                             require_once "../BackEnd/DBConnection.php";
                                             $obj = new Movie();
                                             echo $obj->VIewForAddSchedule(); 
+
+                                        <?php
+                                        require_once "../BackEnd/Movie.php";
+                                        require_once "../BackEnd/DBConnection.php";
+                                        $obj = new Movie();
+                                        echo $obj->VIewForAddSchedule();
                                         ?>
                                     </select>
                                 </div>
@@ -53,7 +63,7 @@
                             <td class="align-top p-2">Select Time</td>
                             <td>
                                 <div data-mdb-input-init class="form-outline">
-                                    <select class="form-select form-select-sm align-top mt-2" id="selectFilmID" name="selectFilmID">
+                                    <select class="form-select form-select-sm align-top mt-2" id="selectFilmID" name="selectTimeSlot">
                                         <option value="0">--Select Time Slot--</option>
                                         <option value="9">9.00 A.M</option>
                                         <option value="12">12.00 P.M</option>
@@ -87,3 +97,18 @@
 </body>
 
 </html>
+
+<?php
+require_once "../BackEnd/FilmSchedule.php";
+$adminId = $_SESSION['userId'];
+if (isset($_POST['btnSubmit'])) {
+    if (isset($_POST['date']) && isset($_POST['selectTimeSlot']) && isset($_POST['selectFilmID'])) {
+        $time = $_POST['selectTimeSlot'];
+        $date = $_POST['date'];
+        $filmId = $_POST['selectFilmID'];
+        $schedule = new FilmSchedule();
+        $schedule->addSchedule($time, $date, $filmId, $adminId);
+    }
+}
+
+?>
