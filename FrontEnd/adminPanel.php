@@ -142,8 +142,6 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
 
 		}
 
-
-
 		function toggleViewFilm() {
 			document.getElementById("main").src = "viewFilm.php";
 
