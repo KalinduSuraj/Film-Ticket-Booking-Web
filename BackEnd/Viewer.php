@@ -27,7 +27,7 @@ class Viewer extends User
             } else {
                 $userId = 'V001';
             }
-            $q2 = "select UserName from User where UserName='$userName'";
+            $q2 = "select UserName from user where UserName='$userName'";
 
             $res = mysqli_query($this->db->getConnection(), $q2);
             if (!(mysqli_num_rows($res) == 1)) {
