@@ -35,7 +35,7 @@ session_start();
         </div>
         <?php
 
-        
+
 
         if (isset($_SESSION['userName'])) {
             if ((isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
@@ -46,8 +46,7 @@ session_start();
                                 
                             </div>
                           </div>';
-            }
-            else{
+            } else {
                 echo '<div class="justify-content-end">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0 me-3 text-white log-out "> ' . $_SESSION['userName'] . '</p>
@@ -79,7 +78,7 @@ session_start();
             ?>
         </div>
     </div>
-    
+
 </body>
 <!-- footer -->
 <footer class="footer container-fluid">

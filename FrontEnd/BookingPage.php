@@ -2,6 +2,10 @@
 session_start();
 if (!$_SESSION['userId']) {
 	header("Location: signIn.php");
+} else {
+	if (!$_GET['F_Id']) {
+		header("Location: index.php");
+	}
 }
 
 ?>

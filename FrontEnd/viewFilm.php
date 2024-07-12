@@ -22,14 +22,14 @@
 						<th scope="col">Name</th>
 						<th scope="col">Language</th>
 						<th scope="col">Year</th>
-						<th scope="col">Edit / Remove</th>
+						<th scope="col"></th>
 					</tr>
 					<?php
 					require_once "../BackEnd/Movie.php";
 					require_once "../BackEnd/DBConnection.php";
 
 					$obj = new Movie();
-					echo $obj->ViewMovieForRemoveEditPage();
+					echo $obj->ViewMovieForRemovePage();
 					?>
 				</thead>
 

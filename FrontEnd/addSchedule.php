@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!(isset($_SESSION['userId']) && $_SESSION['userType'] == 'A')) {
+    header("Location: index.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +27,7 @@ session_start();
     <div class=" d-flex justify-content-center p-5">
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
             <div class="bg p-3">
-                <form method="POST" action="#" enctype="multipart/form-data">
+                <form method="POST" action="#" enctype="multipart/form-data" id="schedule-form">
                     <h1 class="text-center mb-3">Add Movie Schedule</h1>
                     <table width="100%">
                         <!-- Select Film ID -->
@@ -31,7 +35,7 @@ session_start();
                             <td class="align-top p-2">Select Film ID</td>
                             <td>
                                 <div data-mdb-input-init class="form-outline">
-                                    <select class="form-select form-select-sm align-top mt-2" id="selectFilmID" name="selectFilmID">
+                                    <select class="form-select form-select-sm align-top mt-2" id="filmId" name="selectFilmID">
                                         <option value="0">--Select Film ID--</option>
                                         <?php
                                         require_once "../BackEnd/Movie.php";
@@ -47,7 +51,7 @@ session_start();
                             <td class="align-top p-2">Select Date</td>
                             <td>
                                 <div data-mdb-input-init class="form-outline">
-                                    <input type="Date" name="date" class="form-control form-control-sm align-top mt-2">
+                                    <input type="Date" id="date" name="date" class="form-control form-control-sm align-top mt-2">
                                 </div>
                             </td>
                         </tr>
@@ -56,12 +60,12 @@ session_start();
                             <td class="align-top p-2">Select Time</td>
                             <td>
                                 <div data-mdb-input-init class="form-outline">
-                                    <select class="form-select form-select-sm align-top mt-2" id="selectFilmID" name="selectTimeSlot">
+                                    <select class="form-select form-select-sm align-top mt-2" id="time" name="selectTimeSlot">
                                         <option value="0">--Select Time Slot--</option>
-                                        <option value="9">9.00 A.M</option>
-                                        <option value="12">12.00 P.M</option>
-                                        <option value="3">3.00 P.M</option>
-                                        <option value="6">6.00 P.></option>
+                                        <option value="9.00A.M">9.00 A.M</option>
+                                        <option value="12.00P.M">12.00 P.M</option>
+                                        <option value="3.00P.M">3.00 P.M</option>
+                                        <option value="6.00P.M">6.00 P.></option>
                                     </select>
                                 </div>
                             </td>
@@ -88,6 +92,29 @@ session_start();
         </div>
     </div>
 </body>
+<script>
+    document.getElementById('schedule-form').addEventListener('submit', function(event) {
+        let filmId = document.getElementById('filmId').value;
+        let time = document.getElementById('time').value;
+        let date = document.getElementById('date').value;
+        let errorMessages = [];
+
+        if (filmId === "0") {
+            errorMessages.push('Please Select Film Id.');
+        }
+        if (time === "0") {
+            errorMessages.push('Please enter Time Slot.');
+        }
+        if (date === "") {
+            errorMessages.push('Please Select Date.');
+        }
+
+        if (errorMessages.length > 0) {
+            event.preventDefault();
+            alert(errorMessages.join('\n'));
+        }
+    });
+</script>
 
 </html>
 
