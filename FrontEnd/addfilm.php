@@ -1,9 +1,9 @@
-<?php /*
+<?php
 session_start();
-if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
+if (!(isset($_SESSION['userId']) && $_SESSION['userType'] == 'A')) {
     header("Location: index.php");
     exit();
-}*/
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +31,7 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
     <div class=" d-flex justify-content-center p-5">
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
             <div class="bg p-3">
-                <form method="POST" action="addfilm.php" enctype="multipart/form-data">
+                <form method="POST" action="addfilm.php" enctype="multipart/form-data" id="addMovie-Form">
                     <h1 class="text-center">Add Movie Details</h1>
                     <table width="100%">
                         <!-- Name -->
@@ -39,7 +39,7 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
                             <td class="align-top p-2">Movie Name </td>
                             <td>
                                 <div data-mdb-input-init class="form-outline">
-                                    <input type="email" name="email" class="form-control form-control-sm align-top mt-2" placeholder="Enter Movie Name">
+                                    <input type="text" id="name" name="name" class="form-control form-control-sm align-top mt-2" placeholder="Enter Movie Name">
                                 </div>
                             </td>
 
@@ -103,13 +103,6 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
                             <td>
                                 <div data-mdb-input-init class="form-outline d-flex gap-2">
                                     <input type="file" name="banner" id="banner" class="form-control form-control-sm align-center mt-2">
-                                    <!-- 
-                                        <button type="button" class="btn btn-outline-danger reset align-top mt-2" id="btnResetFile" onclick="document.getElementById(banner).value = ''">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
-                                        </svg>
-                                        </button>
-                                     -->
                                 </div>
                             </td>
                         </tr>
@@ -119,13 +112,6 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
                             <td>
                                 <div data-mdb-input-init class="form-outline d-flex gap-2">
                                     <input type="file" name="poster" id="poster" class="form-control form-control-sm align-center mt-2">
-                                    <!-- 
-                                        <button type="button" class="btn btn-outline-danger reset align-top mt-2" id="btnResetFile" onclick="document.getElementById(banner).value = ''">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
-                                        </svg>
-                                        </button>
-                                     -->
                                 </div>
                             </td>
                         </tr>
@@ -136,13 +122,13 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
                                 <div class="d-flex gap-2 justify-content-end">
                                     <div data-mdb-input-init class="form-outline ">
                                         <button type="reset" class="btn btn-outline-danger reset align-top mt-2" id="btnResetFile">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                                            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-eraser-fill' viewBox='0 0 16 16'>
+                                                <path d='M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293z' />
                                             </svg>
                                         </button>
                                     </div>
                                     <div data-mdb-input-init class="form-outline ">
-                                        <input class="btn btn-success align-end mt-2" type="submit" name="btnSubmit" value="Submit">
+                                        <input class="btn btn-success align-end mt-2" id="btnSubmit" type="submit" name="btnSubmit" value="Submit">
                                     </div>
                                 </div>
                             </td>
@@ -153,6 +139,51 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
         </div>
     </div>
 </body>
+
+<script>
+    document.getElementById('addMovie-Form').addEventListener('submit', function(event) {
+        let name = document.getElementById('name').value;
+        let description = document.getElementById('description').value;
+        let poster = document.getElementById('poster').files;
+        let banner = document.getElementById('banner').files;
+        let genre = document.getElementById('genre').value;
+        let year = document.getElementById('year').value;
+        let price = document.getElementById('price').value;
+        let language = document.getElementById('language').value;
+
+        let errorMessages = [];
+
+        if (name === "") {
+            errorMessages.push('Please enter Film Name.');
+        }
+        if (description === "") {
+            errorMessages.push('Please enter Film Description.');
+        }
+        if (poster.length === 0) {
+            errorMessages.push('Please Add Poster Image .');
+        }
+        if (banner.length === 0) {
+            errorMessages.push('Please Add Banner Image.');
+        }
+        if (genre === "") {
+            errorMessages.push('Please enter Genre.');
+        }
+        if (year === "" || isNaN(year) || year.length !== 4) {
+            errorMessages.push('Please enter a valid 4-digit year.');
+        }
+        if (price === "" || isNaN(price)) {
+            errorMessages.push('Please enter valid Price.');
+        }
+        if (language === "0") {
+            errorMessages.push('Please enter a Language.');
+        }
+
+        if (errorMessages.length > 0) {
+            event.preventDefault();
+            alert(errorMessages.join('\n'));
+        }
+    });
+</script>
 
 </html>
 
