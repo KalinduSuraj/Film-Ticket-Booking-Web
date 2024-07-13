@@ -112,7 +112,7 @@ $filmData = $obj->ViewMovieForFilmInterface($F_Id);
         </label>
       </h4>
 
-      <a href="BookingPage.php?F_Id=<?php echo $filmData['F_Id']; ?>">
+      <a href="BookingPage.php?F_Id=<?php echo $filmData['F_Id']; ?>&Name=<?php echo $filmData['Name']; ?>&Price=<?php echo $filmData['Ticket_Price']; ?>">
         <button class="btnBooking btn-primary">Book Tickets</button>
       </a>
 

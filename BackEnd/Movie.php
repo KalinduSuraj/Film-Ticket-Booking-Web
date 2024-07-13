@@ -28,6 +28,7 @@ class Movie
                         values('$filmId','$name','$releaseYear','$description','$language','$ticketPrice','$posterImg','$bannerImg','$genre');";
 
             $result = mysqli_query($this->db->getConnection(), $queary);
+            $this->db->disconnect();
 
             if ($result) {
                 $posterPath = "posterImg/" . $posterImg;
@@ -44,57 +45,9 @@ class Movie
         } catch (exception $e) {
             echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
             return false;
-        } finally {
-            $this->db->disconnect();
         }
     }
-    public function EditMovie($filmId, $name, $releaseYear, $description, $language, $ticketPrice, $genre, $posterImg, $tempPosterImg, $bannerImg, $tempBannerImg)
-    {
-        try {
-            // Check if the movie exists
-            $checkQuery = "SELECT F_Id FROM film WHERE F_Id = '$filmId';";
-            $checkResult = mysqli_query($this->db->getConnection(), $checkQuery);
 
-            if (mysqli_num_rows($checkResult) == 1) {
-                // Movie exists, proceed with update
-
-                // Update query
-                $updateQuery = "UPDATE film SET Name = '$name', Relese_Year = '$releaseYear', Description = '$description',
-                                Language = '$language', Ticket_Price = '$ticketPrice', poster = '$posterImg', banner = '$bannerImg',
-                                Genre = '$genre' WHERE F_Id = '$filmId';";
-
-                $updateResult = mysqli_query($this->db->getConnection(), $updateQuery);
-
-                if ($updateResult) {
-                    // Successfully updated
-                    $posterPath = "posterImg/" . $posterImg;
-                    $bannerPath = "bannerImg/" . $bannerImg;
-
-                    // Move uploaded images to destination folders
-                    if (move_uploaded_file($tempPosterImg, $posterPath) && move_uploaded_file($tempBannerImg, $bannerPath)) {
-                        echo "<script> console.log('Movie updated'); </script>";
-                        return true;
-                    } else {
-                        echo "Failed to upload images!";
-                        return false;
-                    }
-                } else {
-                    // Update failed
-                    echo "<script> console.log('Failed to update movie'); </script>";
-                    return false;
-                }
-            } else {
-                // Movie does not exist
-                echo "<script> console.log('Movie with ID $filmId does not exist'); </script>";
-                return false;
-            }
-        } catch (Exception $e) {
-            echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
-            return false;
-        } finally {
-            $this->db->disconnect(); // Ensure database connection is closed
-        }
-    }
     public function RemoveMovie($filmId)
     {
         try {
@@ -106,7 +59,7 @@ class Movie
                 $queary = "delete from film where F_Id='$filmId';";
 
                 $result = mysqli_query($this->db->getConnection(), $queary);
-
+                $this->db->disconnect();
                 if ($result) {
                     echo "<script> console.log('Deleted '); </script>";
                 } else {
@@ -120,8 +73,6 @@ class Movie
         } catch (exception $e) {
             echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
             return false;
-        } finally {
-            $this->db->disconnect();
         }
     }
 
@@ -150,12 +101,11 @@ class Movie
                 $output .= '</div>';
             }
             $output .= '</div>';
+            $this->db->disconnect();
             return $output;
         } catch (exception $e) {
             echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
             return false;
-        } finally {
-            $this->db->disconnect();
         }
     }
     public function ViewMovieForFilmInterface($F_Id)
@@ -163,7 +113,7 @@ class Movie
         try {
             $query = "SELECT * FROM film WHERE F_Id ='$F_Id'";
             $result = mysqli_query($this->db->getConnection(), $query);
-
+            $this->db->disconnect();
             if (!$result) {
                 throw new Exception("Database Query Failed");
             }
@@ -177,8 +127,6 @@ class Movie
         } catch (Exception $e) {
             echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
             return false;
-        } finally {
-            $this->db->disconnect();
         }
     }
 
@@ -187,7 +135,7 @@ class Movie
         try {
             $queary = "Select F_Id,Name,Relese_Year,Language from film ";
             $result = mysqli_query($this->db->getConnection(), $queary);
-            $output = ""; // Initialize $output as an empty string
+            $output = "";
             while ($row = mysqli_fetch_assoc($result)) {
                 $output .= "<tr id='row-{$row['F_Id']}'>";
                 $output .= "  <td>" . $row['F_Id'] . "</td>";
@@ -206,12 +154,11 @@ class Movie
 
                 $output .= "</tr>";
             }
+            $this->db->disconnect();
             return $output;
         } catch (exception $e) {
             echo "<script> console.log('Error: " . $e->getMessage() . "'); </>";
             return null;
-        } finally {
-            $this->db->disconnect();
         }
     }
 
@@ -220,16 +167,15 @@ class Movie
         try {
             $queary = "Select F_Id from film ";
             $result = mysqli_query($this->db->getConnection(), $queary);
-            $output = ""; // Initialize $output as an empty string
+            $output = "";
             while ($row = mysqli_fetch_assoc($result)) {
                 $output .= "<option value='" . $row['F_Id'] . "'>" . $row['F_Id'] . "</option>";
             }
+            $this->db->disconnect();
             return $output;
         } catch (Exception $e) {
             echo "<script> console.log('Error: " . $e->getMessage() . "'); </>";
             return null;
-        } finally {
-            $this->db->disconnect();
         }
     }
 }

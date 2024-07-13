@@ -32,6 +32,7 @@ class User
                 $_SESSION['userName'] = $userName;
                 $_SESSION['userId'] = $userId;
                 $_SESSION['userType'] = $userType;
+                $this->db->disconnect();
                 if ($userType == "V") {
                     echo "<script type='text/javascript'>window.location.href = '../FrontEnd/index.php';</script>";
 
@@ -47,14 +48,12 @@ class User
                 echo "<script> alert('Invalid username or password'); </script>";
                 return false;
             }
+            
         } catch (Exception $e) {
 
             echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
             return false;
-        } finally {
-
-            $this->db->disconnect();
-        }
+        } 
     }
     function resetPassword($password, $token)
     {
@@ -69,6 +68,7 @@ class User
         } else {
             $queary = "UPDATE user SET Password='$password',reset_token_hash = NULL,reset_token_expire_at = NULL WHERE reset_token_hash = '$tokenHash'";
             $result = mysqli_query($this->db->getConnection(), $queary);
+            $this->db->disconnect();
             if ($result === true) {
                 echo "<script>alert('Password updated Successfully');
                         window.location.href = '../FrontEnd/signIn.php';       

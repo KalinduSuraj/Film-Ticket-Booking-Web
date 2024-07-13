@@ -60,6 +60,7 @@ class Mail
             } catch (Exception $e) {
                 echo "message could not be sent. Mailer error: {$mail->ErrorInfo}";
             }
+            $this->db->disconnect();
         }
     }
 }
