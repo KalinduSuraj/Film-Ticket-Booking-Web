@@ -15,133 +15,150 @@
     <style>
         /* ticket css */
         body {
-  background-color: Thistle;
-  font-family: "Yanone Kaffeesatz", sans-serif;
-  font-weight: 600;
-}
+            background-color: Thistle;
+            font-family: "Yanone Kaffeesatz", sans-serif;
+            font-weight: 600;
+        }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
+        img {
+            max-width: 100%;
+            height: auto;
+        }
 
-.ticket {
-  width: 400px;
-  height: 775px;
-  background-color: white;
-  margin: 25px auto;
-  position: relative;
-}
+        .ticket {
+            width: 400px;
+            height: 775px;
+            background-color: white;
+            margin: 25px auto;
+            position: relative;
+        }
 
-.holes-top {
-  height: 50px;
-  width: 50px;
-  background-color: Thistle;
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  margin-left: -25px;
-  top: -25px;
-}
-.holes-top:before, .holes-top:after {
-  content: "";
-  height: 50px;
-  width: 50px;
-  background-color: Thistle;
-  position: absolute;
-  border-radius: 50%;
-}
-.holes-top:before {
-  left: -200px;
-}
-.holes-top:after {
-  left: 200px;
-}
+        .holes-top {
+            height: 50px;
+            width: 50px;
+            background-color: Thistle;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            margin-left: -25px;
+            top: -25px;
+        }
 
-.holes-lower {
-  position: relative;
-  margin: 25px;
-  border: 1px dashed #aaa;
-}
-.holes-lower:before, .holes-lower:after {
-  content: "";
-  height: 50px;
-  width: 50px;
-  background-color: Thistle;
-  position: absolute;
-  border-radius: 50%;
-}
-.holes-lower:before {
-  top: -25px;
-  left: -50px;
-}
-.holes-lower:after {
-  top: -25px;
-  left: 350px;
-}
+        .holes-top:before,
+        .holes-top:after {
+            content: "";
+            height: 50px;
+            width: 50px;
+            background-color: Thistle;
+            position: absolute;
+            border-radius: 50%;
+        }
 
-.title {
-  padding: 50px 25px 10px;
-}
+        .holes-top:before {
+            left: -200px;
+        }
 
-.cinema {
-  color: #aaa;
-  font-size: 22px;
-}
+        .holes-top:after {
+            left: 200px;
+        }
 
-.movie-title {
-  font-size: 50px;
-}
+        .holes-lower {
+            position: relative;
+            margin: 25px;
+            border: 1px dashed #aaa;
+        }
 
-.info {
-  padding: 15px 25px;
-}
+        .holes-lower:before,
+        .holes-lower:after {
+            content: "";
+            height: 50px;
+            width: 50px;
+            background-color: Thistle;
+            position: absolute;
+            border-radius: 50%;
+        }
 
-table {
-  width: 100%;
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-table tr {
-  margin-bottom: 10px;
-}
-table th {
-  text-align: left;
-}
-table th:nth-of-type(1) {
-  width: 38%;
-}
-table th:nth-of-type(2) {
-  width: 40%;
-}
-table th:nth-of-type(3) {
-  width: 15%;
-}
-table td {
-  width: 33%;
-  font-size: 32px;
-}
+        .holes-lower:before {
+            top: -25px;
+            left: -50px;
+        }
 
-.bigger {
-  font-size: 48px;
-}
+        .holes-lower:after {
+            top: -25px;
+            left: 350px;
+        }
 
-.serial {
-  padding: 25px;
-}
-.serial table {
-  border-collapse: collapse;
-  margin: 0 auto;
-}
-.serial td {
-  width: 3px;
-  height: 50px;
-}
+        .title {
+            padding: 50px 25px 10px;
+        }
 
-.numbers td {
-  font-size: 16px;
-  text-align: center;
-}
+        .cinema {
+            color: #aaa;
+            font-size: 22px;
+        }
+
+        .movie-title {
+            font-size: 50px;
+        }
+
+        .info {
+            padding: 15px 25px;
+        }
+
+        table {
+            width: 100%;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        table tr {
+            margin-bottom: 10px;
+        }
+
+        table th {
+            text-align: left;
+        }
+
+        table th:nth-of-type(1) {
+            width: 38%;
+        }
+
+        table th:nth-of-type(2) {
+            width: 40%;
+        }
+
+        table th:nth-of-type(3) {
+            width: 15%;
+        }
+
+        table td {
+            width: 33%;
+            font-size: 32px;
+        }
+
+        .bigger {
+            font-size: 48px;
+        }
+
+        .serial {
+            padding: 25px;
+        }
+
+        .serial table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        .serial td {
+            width: 3px;
+            height: 50px;
+        }
+
+        .numbers td {
+            font-size: 16px;
+            text-align: center;
+        }
+
         /*  */
         * {
             font-family: 'Poppins', sans-serif;
@@ -424,8 +441,8 @@ table td {
                         <p class="cinema">MovieLK CINEMA PRESENTS</p>
                         <p class="movie-title" id="movieName">Movie Name</p>
                     </div>
-                    <div class="poster">
-                        <img id="ticketImage" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/25240/only-god-forgives.jpg" alt="Movie Poster" />
+                    <div class="poster justify-content-center d-flex">
+                        <img id="ticketImage" src="src/Logo.png" alt="Movie Poster" />
                     </div>
                     <div class="info">
                         <table>
@@ -435,7 +452,7 @@ table td {
                             </tr>
                             <tr>
 
-                                <td class="bigger">24</td>
+                                <td class="bigger" id="SeatNo">24</td>
                             </tr>
                         </table>
                         <table>
@@ -451,7 +468,7 @@ table td {
                             </tr>
                         </table>
                     </div>
-                    <div class="holes-lower"></div>                    
+                    <div class="holes-lower"></div>
                 </div>
             </div>
             <!--|Ticket|-->
@@ -498,8 +515,6 @@ table td {
             document.querySelector(".cvv-box").innerText =
                 document.querySelector(".cvv-input").value;
         };
-
-        
     </script>
 </body>
 

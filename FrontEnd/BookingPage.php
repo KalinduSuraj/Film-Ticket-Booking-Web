@@ -51,7 +51,7 @@ if (!$_SESSION['userId']) {
 </head>
 
 <body onload="dateBtn(); seatArray(); ">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 			<div class="col d-flex justify-content-center mb-3 ">
 				<h1>Select your watching place</h1>
@@ -74,9 +74,9 @@ if (!$_SESSION['userId']) {
 					<!-- --------------------
 						select Time 
 					-------------------- !-->
-					<div class="col d-flex">
+					<div class="col d-flex justify-content-end">
 						<table id="forTime">
-							<tr style="align-items: center; align-content: center;">
+							<tr style="align-items: center; align-content: center;" >
 								<td><button type="button" id='time1' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="10.00 AM">10.00 AM </button></td>
 								<td><button type="button" id='time2' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="01.00 PM">01.00 PM </button></td>
 								<td><button type="button" id='time3' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="04.00 PM">04.00 PM </button></td>
@@ -98,7 +98,7 @@ if (!$_SESSION['userId']) {
 						booking array 
 					-------------------	!-->
 
-					<div class="col container1 justify-content-center">
+					<div class="col container1 justify-content-center m-4 mt-0">
 						<div class="row d-flex">
 							<table id="seat">
 
@@ -133,7 +133,8 @@ if (!$_SESSION['userId']) {
 								</thead>
 							</table>
 
-							<input type="submit" text="run">
+							<!-- <input type="submit" text="run"> -->
+							<button type="submit" class="btn btn-primary">Book</button>
 
 						</form>
 					</div>
