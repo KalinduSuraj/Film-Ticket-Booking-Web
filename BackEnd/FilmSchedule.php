@@ -32,6 +32,7 @@ class FilmSchedule
             $queary = "INSERT into schedule(schedule_id,Time,film_id,admin_id,Date)
                             values('$scheduleId','$time','$filmId','$adminId','$date')";
             $result = mysqli_query($this->db->getConnection(), $queary);
+            $this->db->disconnect();
             if ($result) {
                 echo "<script>alert('Schedule Added Successfully!');</script>";
             } else {
@@ -39,40 +40,7 @@ class FilmSchedule
             }
         } catch (Exception $e) {
             echo "<script>alert('error! " . $e . "');</script>";
-        } finally {
-            $this->db->disconnect();
         }
     }
-
-    //remove schedule
-    // function removeSchedule($scheduleId)
-    // {
-    //     try {
-    //         $q = "select schedule_id from schedule where schedule_id = '$scheduleId';";
-    //         $res = mysqli_query($this->db->getConnection(), $q);
-
-    //         if (mysqli_num_rows($res) == 1) {
-
-    //             $queary = "delete from schedule where schedule_id='$scheduleId';";
-
-    //             $result = mysqli_query($this->db->getConnection(), $queary);
-
-    //             if ($result) {
-    //                 echo "<script> alert('Deleted Schedule '); </script>";
-    //             } else {
-    //                 echo "<script> alert('not Deleted Schedule'); </script>";
-    //             }
-    //             return true;
-    //         } else {
-    //             echo "<script> alert('There is no Film in that $scheduleId'); </script>";
-    //             return false;
-    //         }
-    //     } catch (exception $e) {
-    //         echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
-    //         return false;
-    //     } finally {
-    //         $this->db->disconnect();
-    //     }
-    // }
 }
 ?>

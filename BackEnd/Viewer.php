@@ -39,7 +39,7 @@ class Viewer extends User
 
                 $result1 = mysqli_query($this->db->getConnection(), $queary1);
                 $result2 = mysqli_query($this->db->getConnection(), $queary2);
-
+                $this->db->disconnect();
                 if ($result1 && $result2) {
                     echo "<script> console.log('Added'); </script>";
                     echo "<script>alert('User Registered Successfully');</script>";
@@ -59,8 +59,6 @@ class Viewer extends User
         } catch (exception $e) {
             echo "<script> console.log('Error: " . $e->getMessage() . "'); </script>";
             return false;
-        } finally {
-            $this->db->disconnect();
         }
     }
 }
