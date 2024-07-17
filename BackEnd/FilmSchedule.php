@@ -29,8 +29,8 @@ class FilmSchedule
             } else {
                 $filmId = 'S001';
             }
-            $queary = "INSERT into schedule(schedule_id,Time,film_id,admin_id,Date)
-                            values('$scheduleId','$time','$filmId','$adminId','$date')";
+            $queary = "INSERT into schedule(schedule_id,film_id,admin_id,Date,Time)
+                            values('$scheduleId','$filmId','$adminId','$date','$time')";
             $result = mysqli_query($this->db->getConnection(), $queary);
             $this->db->disconnect();
             if ($result) {

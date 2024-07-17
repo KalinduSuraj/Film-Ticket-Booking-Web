@@ -119,7 +119,7 @@ if (!$_SESSION['userId']) {
 						booking Table 
 					-------------------	!-->
 					<div class="col">
-						<form>
+						<form method="POST" action="BookingPage.php">
 							<table class="table" id="bookingTable">
 								<thead>
 									<tr>
@@ -132,15 +132,10 @@ if (!$_SESSION['userId']) {
 									</tr>
 								</thead>
 							</table>
-
-							<input type="submit" text="run">
-
+							<input type="submit" text="run" name="book" value="Book">
 						</form>
 					</div>
-
 				</div>
-
-
 			</div>
 		</div>
 	</div>
@@ -175,9 +170,6 @@ if (!$_SESSION['userId']) {
 			if (document.getElementById("date").value == null) {
 				alert("Please select date first..!")
 			} else {
-
-
-
 				var seatId = sId.toString();
 
 				//fName,shId,vId,
@@ -243,7 +235,6 @@ if (!$_SESSION['userId']) {
 					document.getElementById(cn).style.backgroundColor = "#5BFF85";
 					break;
 				}
-
 			}
 
 		}
@@ -312,3 +303,18 @@ if (!$_SESSION['userId']) {
 </body>
 
 </html>
+<?php
+if (isset($_POST['book'])) {
+	if (isset($_POST['date']) && isset($_POST['time'])) {
+
+		echo "<script>alert('come to this!!');</script>";
+		$date = $_POST['date'];
+		$time = $_POST['time'];
+		$filmId = $_GET['F_Id'];
+		$viewer = $_GET['userId'];
+		$obj = new Booking();
+		$obj->SetBooking($date, $time, $filmId, $sId, $viewer);
+	}
+}
+
+?>

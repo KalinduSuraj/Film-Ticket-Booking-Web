@@ -9,14 +9,15 @@ class Booking
         $this->db = new DBConnection();
         $this->db->connect();
     }
-    public function SetBooking($date, $time, $filmId, $seatNo, $scheduleId, $viewerId)
+    public function SetBooking($date, $time, $filmId, $seatNo, $viewerId)
     {
 
         try {
-            $queary = "SELECT * FROM schedule where film_Id='$filmId' and Date='$date' and Time='$time'";
+            echo "<script>alert('come to this!!');</script>";
+            $queary = "SELECT schedule_id FROM schedule where film_Id='$filmId' and Date='$date' and Time='$time'";
             $res = mysqli_query($this->db->getConnection(), $queary);
             if ($row1 = mysqli_fetch_array($res)) {
-
+                $scheduleId = $row1["schedule_id"];
                 $q1 = "SELECT MAX(booking_id) from booking";
                 $r = mysqli_query($this->db->getConnection(), $q1);
                 if ($row = mysqli_fetch_array($r)) {
@@ -29,8 +30,8 @@ class Booking
                     $bookingId = 'B001';
                 }
 
-                $sql = "INSERT into booking(booking_id,Date,schedule_id,Seat_No,Time,viewer_id) 
-                        values('$bookingId','$$date','$scheduleId','$seatNo','$time','$viewerId')";
+                $sql = "INSERT into booking(booking_id,schedule_id,viewer_id,Date,Seat_No,Time) 
+                        values('$bookingId','$scheduleId','$viewerId','$date','$seatNo','$time')";
                 $result = mysqli_query($this->db->getConnection(), $sql);
                 if ($row2 = mysqli_fetch_array($result)) {
                     echo "<script>alert('Booking Added!!');</script>";
@@ -41,17 +42,23 @@ class Booking
             echo "Error!: " . $e;
         }
     }
-    public function viewBooking($filmId,$date,$time){
-        try{
+    public function viewBooking($filmId, $date, $time)
+    {
+        try {
             $sql = "SELECT Seat_No FROM booking INNER JOIN schedule ON booking.schedule_id = schedule.schedule_id 
-                    where booking.Time ='$time' and booking.Date='$date' and schedule.F_Id='$filmId'; ";
-            $result = mysqli_query($this->db->getConnection(),$sql);
-            $row = mysqli_fetch_array($result);
-    
-            return $row;
-        }
-        catch(Exception $e){
-            echo "Error: ".$e;
+                    where booking.Time ='$time' and booking.Date='$date' and schedule.film_id='$filmId'; ";
+            $result = mysqli_query($this->db->getConnection(), $sql);
+            $output = "";
+            $output .= "<table?>";
+            $output .= "<tr>";
+            while ($row = mysqli_fetch_array($result)) {
+                $output .= "<td>" . $row['Seat_No'] . "</td>";
+            }
+            $output .= "</tr>";
+            $output .= "</table>";
+            return $output;
+        } catch (Exception $e) {
+            echo "Error: " . $e;
             return null;
         }
     }

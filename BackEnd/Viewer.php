@@ -47,7 +47,6 @@ class Viewer extends User
 
                     User::logIn($userName, $password);
                     echo "<script>window.href='signIn.php';</script>";
-                    //header("Location: index.php");
                 } else {
                     echo "<script> alert('not Added'); </>";
                 }

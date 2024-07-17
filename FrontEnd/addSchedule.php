@@ -14,6 +14,7 @@ if (!(isset($_SESSION['userId']) && $_SESSION['userType'] == 'A')) {
     <title>Add Schedule</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
 
     <style type="text/css">
         body {
@@ -38,11 +39,11 @@ if (!(isset($_SESSION['userId']) && $_SESSION['userType'] == 'A')) {
                                     <select class="form-select form-select-sm align-top mt-2" id="filmId" name="selectFilmID">
                                         <option value="0">--Select Film ID--</option>
 
-                                        <?php 
-                                            require_once "../BackEnd/Movie.php";
-                                            require_once "../BackEnd/DBConnection.php";
-                                            $obj = new Movie();
-                                            echo $obj->VIewForAddSchedule();
+                                        <?php
+                                        require_once "../BackEnd/Movie.php";
+                                        require_once "../BackEnd/DBConnection.php";
+                                        $obj = new Movie();
+                                        echo $obj->VIewForAddSchedule();
                                         ?>
                                     </select>
                                 </div>
@@ -63,10 +64,10 @@ if (!(isset($_SESSION['userId']) && $_SESSION['userType'] == 'A')) {
                                 <div data-mdb-input-init class="form-outline">
                                     <select class="form-select form-select-sm align-top mt-2" id="time" name="selectTimeSlot">
                                         <option value="0">--Select Time Slot--</option>
-                                        <option value="9.00A.M">9.00 A.M</option>
-                                        <option value="12.00P.M">12.00 P.M</option>
-                                        <option value="3.00P.M">3.00 P.M</option>
-                                        <option value="6.00P.M">6.00 P.></option>
+                                        <option value="10.00A.M">10.00 A.M</option>
+                                        <option value="1.00P.M">1.00 P.M</option>
+                                        <option value="4.00P.M">4.00 P.M</option>
+                                        <option value="7.00P.M">7.00 P.M</option>
                                     </select>
                                 </div>
                             </td>
