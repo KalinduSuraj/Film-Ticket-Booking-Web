@@ -211,6 +211,12 @@ if (isset($_POST['signUpBtn'])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $contactNo  = $_POST["contactNo"];
+
+    // cookies
+
+    setcookie('userName', $userName, time() + 3600, '/', "", 0);
+    setcookie('password', $password, time() + 3600, '/', "", 0);
+    setcookie('email', $email, time() + 3600, '/', "", 0);
   }
   $obj = new Viewer();
   $obj->registration($userName, $name, $email, $password, $contactNo);

@@ -104,9 +104,7 @@ if (!$_SESSION['userId']) {
 							<div class="d-flex trapezoid">
 								<p style="margin-top: 5px;margin-left: 60px;color: black ;">Screen</p>
 							</div>
-						</div>
-
-
+						</div> 
 					</div>
 
 					<!-- ------------------ 

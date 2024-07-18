@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -98,9 +97,8 @@
 			<div class="container d-flex">
 				<div id="mySidenav" class="sidebar ">
 					<a href="javascript:void(0)" class="closebtn a2" onclick="closeNav()">&#9776;</a>
-					<a class="a1"  href="#" onclick="viewBookings()">Booking</a>
-					<a class="a1"  href="#" onclick="confirmLogout()">Logout</a>
-					
+					<a class="a1" href="#" onclick="confirmLogout()">Logout</a>
+
 				</div>
 				<span style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776; </span>
 			</div>
@@ -109,7 +107,7 @@
  		form load
 ------------------------------------------ !-->
 		<div class="col ">
-			<iframe src="viewBooking.php" id="main" style=" margin-Left:200px;margin-top:0px; width: 85%; height: 500px;">
+			<!-- <iframe src="viewBooking.php" id="main" style=" margin-Left:200px;margin-top:0px; width: 85%; height: 500px;"> -->
 			</iframe>
 		</div>
 
@@ -128,20 +126,14 @@
 			document.getElementById("main").style.marginLeft = "0";
 		}
 
-		function viewBookings() {
-			document.getElementById("main").src = "viewBooking.php";
-
+		function confirmLogout() {
+			if (confirm('Are you sure you want to log out?')) {
+				window.location.href = 'logOut.php';
+			} else {
+				window.location.href = 'index.php';
+			}
 		}
-
-        
-        function confirmLogout() {
-            if (confirm('Are you sure you want to log out?')) {
-                window.location.href = 'logOut.php';
-            } else {
-                window.location.href = 'index.php';
-            }
-        }
-    </script>
+	</script>
 
 </body>
 
