@@ -455,8 +455,8 @@ if (!$_SESSION['userId']) {
                         <p class="cinema">MovieLK CINEMA PRESENTS</p>
                         <p class="movie-title" id="movieName"><?php echo $filmName; ?></p>
                     </div>
-                    <div class="poster">
-                        <img id="ticketImage" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/25240/only-god-forgives.jpg" alt="Movie Poster" />
+                    <div class="poster d-flex justify-content-center">
+                        <img id="ticketImage" src="../FrontEnd/src/Logo.png" alt="Movie Poster" />
                     </div>
                     <div class="info">
                         <table>

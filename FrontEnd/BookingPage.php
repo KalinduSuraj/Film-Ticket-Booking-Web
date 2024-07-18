@@ -255,12 +255,12 @@ if (!$_SESSION['userId']) {
 
 					document.getElementById(tid).setAttribute("name", reNum);
 
-					alert("name" + document.getElementById(tid).getAttribute("name"));
+					//alert("name" + document.getElementById(tid).getAttribute("name"));
 
 
 					document.getElementById('rowNum').value = n1;
 
-					alert(document.getElementById('my').value);
+					//alert(document.getElementById('my').value);
 
 
 
@@ -357,7 +357,7 @@ if (!$_SESSION['userId']) {
 
 				var sid = "seat" + i;
 				let selectedSeat = document.getElementById(sid).value;
-				alert(selectedSeat);
+				
 
 				if (selectedSeat !== null) {
 					let value = selectedSeat.value;
