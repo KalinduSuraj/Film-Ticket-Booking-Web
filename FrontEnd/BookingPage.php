@@ -78,9 +78,9 @@ if (!$_SESSION['userId']) {
 						<table id="forTime">
 							<tr style="align-items: center; align-content: center;">
 								<td><button type="button" id='time1' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="10.00A.M">10.00 AM </button></td>
-								<td><button type="button" id='time2' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="01.00P.M">01.00 PM </button></td>
-								<td><button type="button" id='time3' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="04.00P.M">04.00 PM </button></td>
-								<td><button type="button" id='time4' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="07.00P.M">07.00 PM </button></td>
+								<td><button type="button" id='time2' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="1.00P.M">01.00 PM </button></td>
+								<td><button type="button" id='time3' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="4.00P.M">04.00 PM </button></td>
+								<td><button type="button" id='time4' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="7.00P.M">07.00 PM </button></td>
 							</tr>
 						</table>
 					</div>
@@ -165,7 +165,7 @@ if (!$_SESSION['userId']) {
 
 
 			//for default time didfine
-			document.getElementById('timeBelt').value = "10.00 AM";
+			document.getElementById('timeBelt').value = "10.00A.M";
 			document.getElementById('time1').style.backgroundColor = "#4AF1FF";
 			document.getElementById('time1').style.color = "#002C3B ";
 
@@ -425,9 +425,10 @@ if (isset($_POST['submit'])) {
 
 	$a = $_POST['rowNum'];
 	$date = $_POST['date'];
-	$month = "7";
 	$time = $_POST['timeBelt'];
-	$setDate = "2024-" . $month . "-" . $date;
+	echo $time;
+	//$time = "10.00A.M";
+	$setDate = "2024-07-" . $date;
 
 	$seatNum = [];
 

@@ -11,12 +11,14 @@ class Booking
     }
     public function SetBooking($date, $time, $filmId, $seatNos, $viewerId)
     {
-        echo "<script>alert('" . $filmId . "');</script>";
-        $date = $date
+        $date = (string)$date;
+        $time = (string)$time;
+        $filmId = (string)$filmId;
+        $viewerId = (string)$viewerId;
         try {
             echo "<script>alert('" . $filmId . "');</script>";
-            echo "<script>alert('" . $time . "');</script>";
             echo "<script>alert('" . $date . "');</script>";
+            echo "<script>alert('" . $time . "');</script>";
             echo "<script>alert('" . $viewerId . "');</script>";
             foreach ($seatNos as $seatNo) {
                 $queary = "SELECT schedule_id FROM schedule where film_Id='$filmId' and Date='$date' and Time='$time'";
