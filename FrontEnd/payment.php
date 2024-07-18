@@ -121,7 +121,9 @@ if (!$_SESSION['userId']) {
 
         table {
             width: 100%;
+
             font-size: 13px;
+
             margin-bottom: 15px;
         }
 
@@ -455,8 +457,10 @@ if (!$_SESSION['userId']) {
                         <p class="cinema">MovieLK CINEMA PRESENTS</p>
                         <p class="movie-title" id="movieName"><?php echo $filmName; ?></p>
                     </div>
+
                     <div class="poster d-flex justify-content-center">
                         <img id="ticketImage" src="../FrontEnd/src/Logo.png" alt="Movie Poster" />
+
                     </div>
                     <div class="info">
                         <table>
@@ -466,7 +470,9 @@ if (!$_SESSION['userId']) {
                             </tr>
                             <tr>
 
+
                                 <td class="bigger"><?php echo $seatNo; ?></td>
+
                             </tr>
                         </table>
                         <table>
