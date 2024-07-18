@@ -426,7 +426,6 @@ if (isset($_POST['submit'])) {
 	$a = $_POST['rowNum'];
 	$date = $_POST['date'];
 	$time = $_POST['timeBelt'];
-	echo $time;
 	//$time = "10.00A.M";
 	$setDate = "2024-07-" . $date;
 

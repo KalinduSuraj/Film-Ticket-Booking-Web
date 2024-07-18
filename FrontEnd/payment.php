@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (!$_SESSION['userId']) {
+    header("Location: signIn.php");
+} else {
+    $filmName = $_GET['filmName'];
+    $date = $_GET['date'];
+    $time = $_GET['time'];
+    $seatNo = $_GET['seatNo'];
+    $price = $_GET['price'];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,133 +29,150 @@
     <style>
         /* ticket css */
         body {
-  background-color: Thistle;
-  font-family: "Yanone Kaffeesatz", sans-serif;
-  font-weight: 600;
-}
+            background-color: Thistle;
+            font-family: "Yanone Kaffeesatz", sans-serif;
+            font-weight: 600;
+        }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
+        img {
+            max-width: 100%;
+            height: auto;
+        }
 
-.ticket {
-  width: 400px;
-  height: 775px;
-  background-color: white;
-  margin: 25px auto;
-  position: relative;
-}
+        .ticket {
+            width: 400px;
+            height: 775px;
+            background-color: white;
+            margin: 25px auto;
+            position: relative;
+        }
 
-.holes-top {
-  height: 50px;
-  width: 50px;
-  background-color: Thistle;
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  margin-left: -25px;
-  top: -25px;
-}
-.holes-top:before, .holes-top:after {
-  content: "";
-  height: 50px;
-  width: 50px;
-  background-color: Thistle;
-  position: absolute;
-  border-radius: 50%;
-}
-.holes-top:before {
-  left: -200px;
-}
-.holes-top:after {
-  left: 200px;
-}
+        .holes-top {
+            height: 50px;
+            width: 50px;
+            background-color: Thistle;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            margin-left: -25px;
+            top: -25px;
+        }
 
-.holes-lower {
-  position: relative;
-  margin: 25px;
-  border: 1px dashed #aaa;
-}
-.holes-lower:before, .holes-lower:after {
-  content: "";
-  height: 50px;
-  width: 50px;
-  background-color: Thistle;
-  position: absolute;
-  border-radius: 50%;
-}
-.holes-lower:before {
-  top: -25px;
-  left: -50px;
-}
-.holes-lower:after {
-  top: -25px;
-  left: 350px;
-}
+        .holes-top:before,
+        .holes-top:after {
+            content: "";
+            height: 50px;
+            width: 50px;
+            background-color: Thistle;
+            position: absolute;
+            border-radius: 50%;
+        }
 
-.title {
-  padding: 50px 25px 10px;
-}
+        .holes-top:before {
+            left: -200px;
+        }
 
-.cinema {
-  color: #aaa;
-  font-size: 22px;
-}
+        .holes-top:after {
+            left: 200px;
+        }
 
-.movie-title {
-  font-size: 50px;
-}
+        .holes-lower {
+            position: relative;
+            margin: 25px;
+            border: 1px dashed #aaa;
+        }
 
-.info {
-  padding: 15px 25px;
-}
+        .holes-lower:before,
+        .holes-lower:after {
+            content: "";
+            height: 50px;
+            width: 50px;
+            background-color: Thistle;
+            position: absolute;
+            border-radius: 50%;
+        }
 
-table {
-  width: 100%;
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-table tr {
-  margin-bottom: 10px;
-}
-table th {
-  text-align: left;
-}
-table th:nth-of-type(1) {
-  width: 38%;
-}
-table th:nth-of-type(2) {
-  width: 40%;
-}
-table th:nth-of-type(3) {
-  width: 15%;
-}
-table td {
-  width: 33%;
-  font-size: 32px;
-}
+        .holes-lower:before {
+            top: -25px;
+            left: -50px;
+        }
 
-.bigger {
-  font-size: 48px;
-}
+        .holes-lower:after {
+            top: -25px;
+            left: 350px;
+        }
 
-.serial {
-  padding: 25px;
-}
-.serial table {
-  border-collapse: collapse;
-  margin: 0 auto;
-}
-.serial td {
-  width: 3px;
-  height: 50px;
-}
+        .title {
+            padding: 50px 25px 10px;
+        }
 
-.numbers td {
-  font-size: 16px;
-  text-align: center;
-}
+        .cinema {
+            color: #aaa;
+            font-size: 22px;
+        }
+
+        .movie-title {
+            font-size: 50px;
+        }
+
+        .info {
+            padding: 15px 25px;
+        }
+
+        table {
+            width: 100%;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        table tr {
+            margin-bottom: 10px;
+        }
+
+        table th {
+            text-align: left;
+        }
+
+        table th:nth-of-type(1) {
+            width: 38%;
+        }
+
+        table th:nth-of-type(2) {
+            width: 40%;
+        }
+
+        table th:nth-of-type(3) {
+            width: 15%;
+        }
+
+        table td {
+            width: 33%;
+            font-size: 32px;
+        }
+
+        .bigger {
+            font-size: 48px;
+        }
+
+        .serial {
+            padding: 25px;
+        }
+
+        .serial table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        .serial td {
+            width: 3px;
+            height: 50px;
+        }
+
+        .numbers td {
+            font-size: 16px;
+            text-align: center;
+        }
+
         /*  */
         * {
             font-family: 'Poppins', sans-serif;
@@ -343,7 +374,7 @@ table td {
                             <div class="flexbox">
                                 <div class="box">
                                     <span>card holder</span>
-                                    <div class="card-holder-name">full name</div>
+                                    <div class="card-holder-name"></div>
                                 </div>
                                 <div class="box">
                                     <span>expires</span>
@@ -367,7 +398,7 @@ table td {
                     <form action="#" method="post">
                         <div class="inputBox">
                             <span>card number</span>
-                            <input type="text" maxlength="16" class="card-number-input" placeholder="1234-1234-1234-1234">
+                            <input type="text" maxlength="19" class="card-number-input" placeholder="1234-1234-1234-1234">
                         </div>
                         <div class="inputBox">
                             <span>card holder</span>
@@ -422,7 +453,7 @@ table td {
                     <div class="holes-top"></div>
                     <div class="title">
                         <p class="cinema">MovieLK CINEMA PRESENTS</p>
-                        <p class="movie-title" id="movieName">Movie Name</p>
+                        <p class="movie-title" id="movieName"><?php echo $filmName; ?></p>
                     </div>
                     <div class="poster">
                         <img id="ticketImage" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/25240/only-god-forgives.jpg" alt="Movie Poster" />
@@ -435,7 +466,7 @@ table td {
                             </tr>
                             <tr>
 
-                                <td class="bigger">24</td>
+                                <td class="bigger"><?php echo $seatNo; ?></td>
                             </tr>
                         </table>
                         <table>
@@ -445,13 +476,13 @@ table td {
                                 <th>TIME</th>
                             </tr>
                             <tr>
-                                <td id="ticketPrice">RS: .00</td>
-                                <td id="date">1/13/17</td>
-                                <td id="time">19:30</td>
+                                <td id="ticketPrice" style="font-size:15px"><?php echo $price; ?></td>
+                                <td id="date" style="font-size:15px"><?php echo $date; ?></td>
+                                <td id="time" style="font-size:15px"><?php echo $time; ?></td>
                             </tr>
                         </table>
                     </div>
-                    <div class="holes-lower"></div>                    
+                    <div class="holes-lower"></div>
                 </div>
             </div>
             <!--|Ticket|-->
@@ -460,9 +491,16 @@ table td {
     </div>
     <!--|JS for card|-->
     <script>
-        document.querySelector(".card-number-input").oninput = () => {
-            document.querySelector(".card-number-box").innerText =
-                document.querySelector(".card-number-input").value;
+        document.querySelector(".card-number-input").oninput = (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            let formattedValue = '';
+            for (let i = 0; i < value.length; i += 4) {
+                if (i > 0) formattedValue += '-';
+                formattedValue += value.substr(i, 4);
+            }
+            e.target.value = formattedValue;
+
+            document.querySelector(".card-number-box").innerText = formattedValue;
         };
 
         document.querySelector(".card-holder-input").oninput = () => {
@@ -498,8 +536,6 @@ table td {
             document.querySelector(".cvv-box").innerText =
                 document.querySelector(".cvv-input").value;
         };
-
-        
     </script>
 </body>
 

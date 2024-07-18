@@ -16,16 +16,11 @@ class Booking
         $filmId = (string)$filmId;
         $viewerId = (string)$viewerId;
         try {
-            echo "<script>alert('" . $filmId . "');</script>";
-            echo "<script>alert('" . $date . "');</script>";
-            echo "<script>alert('" . $time . "');</script>";
-            echo "<script>alert('" . $viewerId . "');</script>";
             foreach ($seatNos as $seatNo) {
                 $queary = "SELECT schedule_id FROM schedule where film_Id='$filmId' and Date='$date' and Time='$time'";
                 $res = mysqli_query($this->db->getConnection(), $queary);
                 if ($row1 = mysqli_fetch_array($res)) {
                     $scheduleId = $row1["schedule_id"];
-                    echo "<script>alert('" . $scheduleId . "');</script>";
                     $q1 = "SELECT MAX(booking_id) from booking";
                     $r = mysqli_query($this->db->getConnection(), $q1);
                     if ($row = mysqli_fetch_array($r)) {
@@ -44,7 +39,7 @@ class Booking
                     $result = mysqli_query($this->db->getConnection(), $sql);
                     // mysqli_fetch_array($result);
                     echo "<script>alert('Booking Added!!');</script>";
-
+                    $this->callPayment($filmId, $date, $time, $seatNo);
                     $this->db->disconnect();
                 } else {
                     echo "<script>alert('if fail!!');</script>";
@@ -62,6 +57,21 @@ class Booking
             $result = mysqli_query($this->db->getConnection(), $sql);
             $row = mysqli_fetch_array($result);
             return $row;
+        } catch (Exception $e) {
+            echo "Error: " . $e;
+            return null;
+        }
+    }
+
+    private function callPayment($filmId, $date, $time, $seatNo)
+    {
+        try {
+            $sql = "Select * from film where F_Id = '$filmId'";
+            $result = mysqli_query($this->db->getConnection(), $sql);
+            $row = mysqli_fetch_array($result);
+            $redirectUrl = '../FrontEnd/payment.php?filmName=' . $row['Name'] . '&date=' . $date . '&time=' . $time . '&seatNo=' . $seatNo . '&price=' . $row['Ticket_Price'];
+
+            echo "<script>window.location.href='$redirectUrl';</script>";
         } catch (Exception $e) {
             echo "Error: " . $e;
             return null;
