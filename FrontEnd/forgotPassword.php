@@ -107,15 +107,13 @@
         </div>
     </div>
 </body>
-
-
 </html>
 <?php
 
 require_once "../BackEnd/Mail.php";
 if (isset($_POST['email'])) {
-    session_start();
     $email = $_POST['email'];
+    session_start();
     $_SESSION['email'] = $email;
     $mail = new Mail();
     $mail->sendMail($email);
