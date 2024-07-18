@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (!$_SESSION['userId']) {
+    header("Location: signIn.php");
+} else {
+    $filmName = $_GET['filmName'];
+    $date = $_GET['date'];
+    $time = $_GET['time'];
+    $seatNo = $_GET['seatNo'];
+    $price = $_GET['price'];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -107,7 +121,9 @@
 
         table {
             width: 100%;
-            font-size: 18px;
+
+            font-size: 13px;
+
             margin-bottom: 15px;
         }
 
@@ -360,7 +376,7 @@
                             <div class="flexbox">
                                 <div class="box">
                                     <span>card holder</span>
-                                    <div class="card-holder-name">full name</div>
+                                    <div class="card-holder-name"></div>
                                 </div>
                                 <div class="box">
                                     <span>expires</span>
@@ -384,7 +400,7 @@
                     <form action="#" method="post">
                         <div class="inputBox">
                             <span>card number</span>
-                            <input type="text" maxlength="16" class="card-number-input" placeholder="1234-1234-1234-1234">
+                            <input type="text" maxlength="19" class="card-number-input" placeholder="1234-1234-1234-1234">
                         </div>
                         <div class="inputBox">
                             <span>card holder</span>
@@ -439,10 +455,12 @@
                     <div class="holes-top"></div>
                     <div class="title">
                         <p class="cinema">MovieLK CINEMA PRESENTS</p>
-                        <p class="movie-title" id="movieName">Movie Name</p>
+                        <p class="movie-title" id="movieName"><?php echo $filmName; ?></p>
                     </div>
-                    <div class="poster justify-content-center d-flex">
-                        <img id="ticketImage" src="src/Logo.png" alt="Movie Poster" />
+
+                    <div class="poster d-flex justify-content-center">
+                        <img id="ticketImage" src="../FrontEnd/src/Logo.png" alt="Movie Poster" />
+
                     </div>
                     <div class="info">
                         <table>
@@ -452,7 +470,9 @@
                             </tr>
                             <tr>
 
-                                <td class="bigger" id="SeatNo">24</td>
+
+                                <td class="bigger"><?php echo $seatNo; ?></td>
+
                             </tr>
                         </table>
                         <table>
@@ -462,9 +482,9 @@
                                 <th>TIME</th>
                             </tr>
                             <tr>
-                                <td id="ticketPrice">RS: .00</td>
-                                <td id="date">1/13/17</td>
-                                <td id="time">19:30</td>
+                                <td id="ticketPrice" style="font-size:15px"><?php echo $price; ?></td>
+                                <td id="date" style="font-size:15px"><?php echo $date; ?></td>
+                                <td id="time" style="font-size:15px"><?php echo $time; ?></td>
                             </tr>
                         </table>
                     </div>
@@ -477,9 +497,16 @@
     </div>
     <!--|JS for card|-->
     <script>
-        document.querySelector(".card-number-input").oninput = () => {
-            document.querySelector(".card-number-box").innerText =
-                document.querySelector(".card-number-input").value;
+        document.querySelector(".card-number-input").oninput = (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            let formattedValue = '';
+            for (let i = 0; i < value.length; i += 4) {
+                if (i > 0) formattedValue += '-';
+                formattedValue += value.substr(i, 4);
+            }
+            e.target.value = formattedValue;
+
+            document.querySelector(".card-number-box").innerText = formattedValue;
         };
 
         document.querySelector(".card-holder-input").oninput = () => {

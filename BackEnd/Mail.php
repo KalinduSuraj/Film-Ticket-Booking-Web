@@ -23,7 +23,8 @@ class Mail
 
         $expiry = date("Y-m-d H:i:s", time() + 60 * 30);
         $sql = "UPDATE user SET reset_token_hash = '$tokenHash', 
-            reset_token_expire_at = '$expiry' WHERE Email = '$email'";
+            reset_token_expires_at
+             = '$expiry' WHERE Email = '$email'";
 
         $result = mysqli_query($this->db->getConnection(), $sql);
 

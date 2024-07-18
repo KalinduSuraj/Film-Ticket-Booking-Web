@@ -5,6 +5,7 @@ if (!(isset($_SESSION['userType']) && $_SESSION['userType'] == 'A')) {
     exit();
 }
 ?>
+<!-- no need -->
 <!DOCTYPE html>
 <html>
 
@@ -114,7 +115,7 @@ if (isset($_POST['btnSubmit'])) {
         $bannerTemp = $_FILES["banner"]["tmp_name"];
 
         $movie = new Movie();
-        $result = $movie->EditMovie($filmId, $name, $year, $description, $language, $price, $genre, $posterImg, $posterTemp, $bannerImg, $bannerTemp);
+        //$result = $movie->EditMovie($filmId, $name, $year, $description, $language, $price, $genre, $posterImg, $posterTemp, $bannerImg, $bannerTemp);
 
         if ($result) {
             echo "<script> alert('Movie added successfully'); </script>";

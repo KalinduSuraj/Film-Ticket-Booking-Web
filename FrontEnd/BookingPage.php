@@ -76,19 +76,21 @@ if (!$_SESSION['userId']) {
 					-------------------- !-->
 					<div class="col d-flex justify-content-end">
 						<table id="forTime">
+
+							<tr style="align-items: center; align-content: center;">
+								<td><button type="button" id='time1' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="10.00A.M">10.00 AM </button></td>
+								<td><button type="button" id='time2' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="1.00P.M">01.00 PM </button></td>
+								<td><button type="button" id='time3' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="4.00P.M">04.00 PM </button></td>
+								<td><button type="button" id='time4' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="7.00P.M">07.00 PM </button></td>
+
 							<tr style="align-items: center; align-content: center;" >
 								<td><button type="button" id='time1' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="10.00 AM">10.00 AM </button></td>
 								<td><button type="button" id='time2' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="01.00 PM">01.00 PM </button></td>
 								<td><button type="button" id='time3' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="04.00 PM">04.00 PM </button></td>
 								<td><button type="button" id='time4' class="btn btn-outline-info btnStyle" onclick="timeClick(this.id)" value="07.00 PM">07.00 PM </button></td>
+
 							</tr>
 						</table>
-						<p id="month"></p>
-						<p id="date"></p>
-						<p id="timeBelt"></p>
-						<p></p>
-						<button id="filmName" value="<?php echo $_GET['Name'] ?>" hidden></button>
-						<button id="price" value="<?php echo $_GET['Price'] ?>" hidden></button>
 					</div>
 				</div>
 				<br><br>
@@ -108,7 +110,7 @@ if (!$_SESSION['userId']) {
 						<div class="row d-flex justify-content-center">
 							<br>
 							<div class="d-flex trapezoid">
-								<p style="margin-top: 5px;margin-left: 60px;color: black;">Screen</p>
+								<p style="margin-top: 5px;margin-left: 60px;color: black ;">Screen</p>
 							</div>
 						</div>
 
@@ -119,7 +121,7 @@ if (!$_SESSION['userId']) {
 						booking Table 
 					-------------------	!-->
 					<div class="col">
-						<form>
+						<form method="post" action="#">
 							<table class="table" id="bookingTable">
 								<thead>
 									<tr>
@@ -133,12 +135,33 @@ if (!$_SESSION['userId']) {
 								</thead>
 							</table>
 
+
+							<input type="submit" text="run" name="submit" value="Book">
+
 							<!-- <input type="submit" text="run"> -->
 							<button type="submit" class="btn btn-primary">Book</button>
 
+
+
+							<button id="Name" value="<?php echo $_GET['Name'] ?>" hidden></button>
+							<button id="price" value="<?php echo $_GET['Price'] ?>" hidden></button>
+							<input type="hidden" name="month" id="month">
+							<input type="hidden" name="date" id="date">
+							<input type="hidden" name="timeBelt" id="timeBelt">
 						</form>
 					</div>
-
+				</div>
+				<div class="row">
+					<div class="col">
+						<?php {
+							$addedSeats = ["C1", "D1", "E2", "F2"];
+							$num = 0;
+							for ($i = 0; $i < count($addedSeats); $i++) {
+								echo  '<input type="hidden" id="seat' . $i . '" name="seat' . $i . '" value="' . htmlspecialchars($addedSeats[$i]) . '">';
+							}
+						}
+						?>
+					</div>
 				</div>
 
 
@@ -152,8 +175,9 @@ if (!$_SESSION['userId']) {
 		function seatArray() {
 			var table = document.getElementById("seat");
 
+
 			//for default time didfine
-			document.getElementById('timeBelt').value = "10.00 AM";
+			document.getElementById('timeBelt').value = "10.00A.M";
 			document.getElementById('time1').style.backgroundColor = "#4AF1FF";
 			document.getElementById('time1').style.color = "#002C3B ";
 
@@ -170,14 +194,22 @@ if (!$_SESSION['userId']) {
 
 				}
 			}
+
+			document.getElementById('rowNum').value = 0;
 		}
 		/*---------------------------  set seat details to table ---------------------------------*/
 		function setSeat(sId) {
+
 			if (document.getElementById("date").value == null) {
-				alert("Please select date first..!")
-			} else {
+				alert("Please select date first..!");
 
+			}
 
+			// if (getSelectedSeats(sId) == 1) {
+			// 	alert("this seat is already booked..!");
+
+			// }
+			else {
 
 				var seatId = sId.toString();
 
@@ -206,6 +238,14 @@ if (!$_SESSION['userId']) {
 				}
 
 				if (x == 0) {
+					let num = document.getElementById('rowNum').value;
+
+					let reNum = "Remove" + num;
+
+					const n1 = ++num;
+
+					let tid = "t" + seatId;
+
 
 					document.getElementById(sId).style.backgroundColor = "#FF4545 ";
 
@@ -217,12 +257,24 @@ if (!$_SESSION['userId']) {
 					var cell5 = row.insertCell(4);
 					var cell6 = row.insertCell(5);
 
-					cell1.innerHTML = document.getElementById('filmName').value;
+					cell1.innerHTML = document.getElementById('Name').value;
 					cell2.innerHTML = month + "/" + date;
 					cell3.innerHTML = document.getElementById("timeBelt").value;
-					cell4.innerHTML = seatId;
+					cell4.innerHTML = '<input type="text" id=' + tid + ' value=' + seatId + ' style="width: 40px">';
 					cell5.innerHTML = document.getElementById('price').value;
-					cell6.innerHTML = '<input id=' + seatId + ' class="btn btn-sm btn-danger" style="background-color: #FF4545 ;color: white;" type="button" name="Remove" value="Remove"  onclick="deleteRow(this.id)">';
+					cell6.innerHTML = '<input id=' + seatId + ' class="btn btn-sm btn-danger" style="background-color: #FF4545 ;color: white;" type="button"  value="Remove"  onclick="deleteRow(this.id)">';
+
+
+					document.getElementById(tid).setAttribute("name", reNum);
+
+					//alert("name" + document.getElementById(tid).getAttribute("name"));
+
+
+					document.getElementById('rowNum').value = n1;
+
+					//alert(document.getElementById('my').value);
+
+
 
 				}
 
@@ -277,7 +329,6 @@ if (!$_SESSION['userId']) {
 		/*--------------------------- Date button click ---------------------------------*/
 		function dateClick(btnId, monthName, day) {
 
-
 			for (var i = 0; i < 7; i++) {
 				document.getElementById("date" + i).style.backgroundColor = "";
 				document.getElementById("date" + i).style.color = "";
@@ -288,6 +339,8 @@ if (!$_SESSION['userId']) {
 
 			document.getElementById('month').value = monthName;
 			document.getElementById('date').value = day;
+
+			disable();
 
 		}
 
@@ -304,6 +357,69 @@ if (!$_SESSION['userId']) {
 			document.getElementById(btnId).style.color = "#002C3B ";
 		}
 
+
+		/*--------------------------- Disable pre booked seats ---------------------------------*/
+
+
+
+		function disable() {
+			var i = 0;
+
+			for (;;) {
+
+				var sid = "seat" + i;
+				let selectedSeat = document.getElementById(sid).value;
+				
+
+				if (selectedSeat !== null) {
+					let value = selectedSeat.value;
+
+					if (value === "") {
+						console.log("The value is empty.");
+					} else {
+						console.log("The value is not empty and is: " + value);
+						document.getElementById(selectedSeat).style.backgroundColor = "#696969";
+					}
+				} else {
+					console.log("The element with the given ID does not exist.");
+				}
+
+				i++;
+
+			}
+		}
+
+		/*--------------------------- Search selected seats for lock booking ---------------------------------*/
+		function getSelectedSeats(sId2) {
+			var i = 0;
+
+			for (i = 0; i < 9; i++) {
+				var sid = "seat" + i;
+				var selectedSeat = document.getElementById(sid).value;
+
+				if (selectedSeat === sId2) {
+
+					return 1;
+					break;
+				}
+
+				if (selectedSeat == null) {
+					break;
+				}
+
+				i++;
+
+			}
+			return 0;
+
+		}
+
+
+		function disableSeats(sId) {
+
+		}
+
+
 		/*--------------------------- Total price calculation ---------------------------------*/
 		function totCal() {
 
@@ -313,3 +429,25 @@ if (!$_SESSION['userId']) {
 </body>
 
 </html>
+
+<?php
+require_once '../BackEnd/Booking.php';
+require_once '../BackEnd/DBConnection.php';
+if (isset($_POST['submit'])) {
+
+	$a = $_POST['rowNum'];
+	$date = $_POST['date'];
+	$time = $_POST['timeBelt'];
+	//$time = "10.00A.M";
+	$setDate = "2024-07-" . $date;
+
+	$seatNum = [];
+
+	for ($i = 0; $i < $a; $i++) {
+		$num = "Remove" . $i;
+		$seatNum[$i] = $_POST[$num];
+	}
+	$obj = new  Booking();
+	$obj->SetBooking($setDate, $time, $_GET['F_Id'], $seatNum, $_SESSION['userId']);
+}
+?>
