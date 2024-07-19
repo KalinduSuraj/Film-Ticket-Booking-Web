@@ -5,6 +5,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require_once "../BackEnd/DBConnection.php";
+require_once "/home/runner/work/Film-Ticket-Booking-Web/Film-Ticket-Booking-Web/BackEnd/Mail.php";
 require_once "../vendor/autoload.php";
 class Mail
 {
