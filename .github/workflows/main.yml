@@ -19,4 +19,4 @@ jobs:
       env:
         MAIL_PASSWORD: ${{ secrets.MAIL_PW }}
       run: |
-        php Mail.php
+        php BackEnd/Mail.php
