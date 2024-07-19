@@ -42,9 +42,9 @@ class Mail
             $mail->SMTPAuth = true;
 
             $mail->Host = "smtp.gmail.com";
-            $mail->Username   = 'movielk72@gmail.com';
+            $mail->Username   = /*Your Mail*/;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Password = "kilc ngmu nhlv rwbu ";
+            $mail->Password = /*Mail Password*/;
             $mail->Port       = 587;
 
             $mail->isHtml(true);
